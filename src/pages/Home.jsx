@@ -2,17 +2,19 @@ import React from 'react';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import WhatPeopleSay from '../components/WhatPeopleSay';
-import CountUp from '../components/CountUp';
+import CounteUp from '../components/CounteUp';
 import Sponsore from '../components/Sponsore';
+import UpcomingMarathons from '../components/UpcomingMarathons';
 
 const Home = () => {
     return (
         <div>
             <Hero></Hero>
             <p>WevSection</p>
+            <UpcomingMarathons></UpcomingMarathons>
             <HowItWorks></HowItWorks>
             <WhatPeopleSay></WhatPeopleSay>
-            <CountUp></CountUp>
+            <CounteUp></CounteUp>
             <Sponsore></Sponsore>
         </div>
     );

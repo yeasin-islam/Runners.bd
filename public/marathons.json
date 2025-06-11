@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Dhaka City Marathon",
+    "location": "Dhaka",
+    "date": "2025-07-10",
+    "distance": "10K",
+    "image": "https://i.ibb.co/G5dBjVn/dhaka-marathon.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Cox's Bazar Beach Run",
+    "location": "Cox's Bazar",
+    "date": "2025-08-02",
+    "distance": "5K",
+    "image": "https://i.ibb.co/ThMn7yb/coxs-run.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Chattogram Challenge",
+    "location": "Chattogram",
+    "date": "2025-08-25",
+    "distance": "25K",
+    "image": "https://i.ibb.co/WpdmpW3/chattogram-marathon.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Sylhet Green Run",
+    "location": "Sylhet",
+    "date": "2025-09-05",
+    "distance": "3K",
+    "image": "https://i.ibb.co/3TmzxjK/sylhet-run.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Barisal Riverside Dash",
+    "location": "Barisal",
+    "date": "2025-09-20",
+    "distance": "10K",
+    "image": "https://i.ibb.co/mN1fhhz/barisal-marathon.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Rajshahi Heritage Marathon",
+    "location": "Rajshahi",
+    "date": "2025-10-01",
+    "distance": "5K",
+    "image": "https://i.ibb.co/MVsjPbY/rajshahi-run.jpg"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Bashundhara Group",
+    "logo": "https://i.ibb.co/cXkV1mn4/download.jpg",
+    "link": "https://bashundharagroup.com/"
+  },
+  {
+    "id": 2,
+    "name": "Runner Automobiles",
+    "logo": "https://i.ibb.co/dsJ0N5q1/download.jpg",
+    "link": "https://www.runnerbd.com/"
+  },
+  {
+    "id": 3,
+    "name": "PRAN",
+    "logo": "https://i.ibb.co/35RVpnkb/download.png",
+    "link": "https://www.pranfoods.net/"
+  },
+  {
+    "id": 4,
+    "name": "Grameenphone",
+    "logo": "https://i.ibb.co/Tx3TQFr7/download.jpg",
+    "link": "https://www.grameenphone.com/"
+  },
+  {
+    "id": 5,
+    "name": "Polar Ice Cream",
+    "logo": "https://i.ibb.co/DPDzpBwn/download.jpg",
+    "link": "https://polarbd.com/"
+  },
+  {
+    "id": 6,
+    "name": "Foodpanda",
+    "logo": "https://i.ibb.co/wr33XQKm/download.png",
+    "link": "https://www.foodpanda.com.bd/"
+  }
+]

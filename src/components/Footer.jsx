@@ -18,7 +18,7 @@ const Footer = () => {
                         <img className="h-11 w-16 -ml-4" src="/assets/WebLogo.png" alt="RunFlow" />
                     </NavLink>
                     <p className="mt-4 text-center sm:text-left max-w-xs">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum repudiandae necessitatibus, modi eum corporis temporibus dicta at explicabo praesentium vitae!
+                        Discover, apply, and manage marathons across the country - all from one simple, powerful platform built for runners like you.
                     </p>
                 </div>
 
