@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "Dhaka City Marathon",
+    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
     "location": "Dhaka",
     "date": "2025-07-10",
     "distance": "10K",
@@ -10,6 +11,8 @@
   {
     "id": 2,
     "title": "Cox's Bazar Beach Run",
+    
+    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
     "location": "Cox's Bazar",
     "date": "2025-08-02",
     "distance": "5K",
@@ -18,6 +21,8 @@
   {
     "id": 3,
     "title": "Chattogram Challenge",
+    
+    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
     "location": "Chattogram",
     "date": "2025-08-25",
     "distance": "25K",
@@ -26,6 +31,8 @@
   {
     "id": 4,
     "title": "Sylhet Green Run",
+    
+    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
     "location": "Sylhet",
     "date": "2025-09-05",
     "distance": "3K",
@@ -34,6 +41,8 @@
   {
     "id": 5,
     "title": "Barisal Riverside Dash",
+    
+    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
     "location": "Barisal",
     "date": "2025-09-20",
     "distance": "10K",
@@ -42,6 +51,8 @@
   {
     "id": 6,
     "title": "Rajshahi Heritage Marathon",
+    
+    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
     "location": "Rajshahi",
     "date": "2025-10-01",
     "distance": "5K",
