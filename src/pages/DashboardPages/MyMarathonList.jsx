@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import LoadingFallback from '../../components/shared/LoadingFallback';
+import Swal from 'sweetalert2';
 
 const MyMarathonList = () => {
     const { user } = useContext(AuthContext);
@@ -26,6 +27,40 @@ const MyMarathonList = () => {
         return (
             <LoadingFallback></LoadingFallback>
         );
+    }
+
+    const handleDelete = (_id) => {
+        // console.log(_id);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            // console.log(result.isConfirmed)
+            if (result.isConfirmed) {
+
+                fetch(`${import.meta.env.VITE_API_URL}/marathons/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log('after delete', data)
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Marathon has been deleted.",
+                                icon: "success"
+                            });
+                            setMyMarathons(myMarathons.filter(marathon => marathon._id !== _id));
+                        }
+                    })
+            }
+        });
     }
 
     return (
@@ -72,7 +107,7 @@ const MyMarathonList = () => {
                                 <td>{marathon.distance}</td>
                                 <td>{marathon.marathonDate}</td>
                                 <td>
-                                    
+                                    <button onClick={() => handleDelete(marathon._id)} className="btn btn-xs md:btn-sm btn-outline btn-error">Delete</button>
                                 </td>
                             </tr>
                         ))}
