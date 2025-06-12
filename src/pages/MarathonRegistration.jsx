@@ -4,6 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 import DatePicker from 'react-datepicker';
+import LoadingFallback from '../components/shared/LoadingFallback';
 
 const MarathonRegistration = () => {
     const { id: marathonId } = useParams();
