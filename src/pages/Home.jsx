@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import WhatPeopleSay from '../components/WhatPeopleSay';
 import CounteUp from '../components/CounteUp';
 import Sponsore from '../components/Sponsore';
 import UpcomingMarathons from '../components/UpcomingMarathons';
+import MarathonsSection from '../components/MarathonsSection';
+import { useLoaderData } from 'react-router';
 
 const Home = () => {
+    
+    const marathonPostsData = useLoaderData();
+    const [marathonPosts] = useState(marathonPostsData);
+
     return (
         <div>
             <Hero></Hero>
-            <p>WevSection</p>
+            <MarathonsSection marathonPosts={marathonPosts}></MarathonsSection>
             <UpcomingMarathons></UpcomingMarathons>
             <HowItWorks></HowItWorks>
             <WhatPeopleSay></WhatPeopleSay>

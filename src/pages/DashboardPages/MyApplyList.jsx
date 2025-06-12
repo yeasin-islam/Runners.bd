@@ -5,7 +5,7 @@ import LoadingFallback from '../../components/shared/LoadingFallback';
 // import { myApplicationPromise } from '../api/applicationsApi';
 
 const myApplicationPromise = email => {
-    return fetch(`http://localhost:3000/registrations?email=${email}`).then(res => res.json())
+    return fetch(`${import.meta.env.VITE_API_URL}/registrations?email=${email}`).then(res => res.json())
 }
 
 const MyApplyList = () => {

@@ -27,6 +27,7 @@ const Router = createBrowserRouter([
                 index: true,
                 path: '/',
                 Component: Home,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/marathons-section-posts`),
                 hydrateFallbackElement: <LoadingFallback />,
             },
             {
