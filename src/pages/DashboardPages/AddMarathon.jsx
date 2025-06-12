@@ -115,7 +115,7 @@ const AddMarathon = () => {
 
                     <div>
                         <legend className="fieldset-legend mb-1">Image</legend>
-                        <input type="text" name="photo" className="input input-bordered w-full" placeholder="Add a photo URL" required />
+                        <input type="url" name="photo" className="input input-bordered w-full" placeholder="Add a photo URL" required />
                     </div>
 
                     <div>

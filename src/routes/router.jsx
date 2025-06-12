@@ -12,6 +12,8 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AddMarathon from "../pages/DashboardPages/AddMarathon";
 import MyMarathonList from "../pages/DashboardPages/MyMarathonList";
 import MyApplyList from "../pages/DashboardPages/MyApplyList";
+import MarathonDetails from "../pages/MarathonDetails";
+import MarathonRegistration from "../pages/MarathonRegistration";
 
 
 const Router = createBrowserRouter([
@@ -61,6 +63,15 @@ const Router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><Profile /></PrivateRoute>,
+            },
+            {
+                path: '/marathon-details/:id',
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/marathons/${params.id}`),
+                element: <PrivateRoute><MarathonDetails /></PrivateRoute>,
+            },
+            {
+                path: '/marathon-registration/:id',
+                element: <PrivateRoute><MarathonRegistration /></PrivateRoute>,
             },
         ]
     },

@@ -5,7 +5,6 @@ import Button from '../components/shared/Button';
 
 const Marathons = () => {
     const marathons = useLoaderData();
-    console.log(marathons);
 
     const [displayMarathons, setDisplayMarathons] = useState([])
     const [showAll, setShowAll] = useState(false)
