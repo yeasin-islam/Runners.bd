@@ -11,11 +11,12 @@ const UpcomingMarathons = () => {
 
     return (
         <section className="bg-base-100 ">
-            <div className='container mx-auto my-6'>
-                <h2 className="text-3xl font-bold text-center mb-8">Upcoming Marathons</h2>
+            <div className='container mx-auto py-12'>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">Upcoming Marathons</h2>
+                <p className="max-w-2xl mx-auto mb-8 text-center">Upcoming marathons across Bangladesh - dates, locations, and distances, all in one place.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {marathons.map(marathon => (
-                        <div key={marathon.id} className="card mx-4 md:mx-0 bg-base-300 shadow-xl">
+                        <div key={marathon.id} className="card mx-4 md:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl">
                             <figure>
                                 <img
                                     src={marathon.image}

@@ -125,7 +125,7 @@ const MyMarathonList = () => {
 
                         <tbody>
                             {myMarathons.map((marathon) => (
-                                <tr key={marathon._id}>
+                                <tr className='transform transition duration-300 hover:scale-100 hover:shadow-2xl' key={marathon._id}>
                                     <td>
                                         <div className="avatar">
                                             <div className="mask mask-squircle h-12 w-12">

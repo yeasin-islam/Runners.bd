@@ -52,10 +52,10 @@ const Marathons = () => {
             <div className='fontStyle py-12 px-4 md:px-0 text-center container mx-auto'>
                 {/* Section Tag & Description */}
                 <div className="mb-8">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
                         All Marathons
                     </h2>
-                    <p className="max-w-2xl mx-auto mb-4">
+                    <p className="max-w-2xl mx-auto mb-8">
                         Browse marathons by date – newest or oldest first.
                     </p>
 
@@ -86,7 +86,7 @@ const Marathons = () => {
 
                 {displayMarathons.length > 0 ? (
                     <Suspense fallback={loading}>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10'>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10'>
                             {displayMarathons.map(marathon => (
                                 <MarathonCard key={marathon._id} marathon={marathon} />
                             ))}

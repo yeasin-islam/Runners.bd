@@ -127,7 +127,8 @@ const MyApplyList = () => {
                     No applications matched your search.
                 </div>
             ) : (
-                        <table className="table w-full bg-base-200 shadow rounded-md text-sm md:text-base">
+                <div className='overflow-x-auto'>
+                    <table className="table w-full bg-base-200 shadow rounded-md text-sm md:text-base">
                             <thead className="bg-base-300">
                                 <tr>
                                     <th>#</th>
@@ -142,7 +143,7 @@ const MyApplyList = () => {
 
                             <tbody>
                                 {filteredApplications.map((application, index) => (
-                                    <tr key={application._id}>
+                                    <tr className='transform transition duration-300 hover:scale-100 hover:shadow-2xl' key={application._id}>
                                         <td>{index + 1}</td>
                                         <td>
                                             <div className="avatar">
@@ -164,7 +165,7 @@ const MyApplyList = () => {
                                         <td>{application.marathonDate}</td>
                                         <td>
                                             <div className="font-bold">{application.applicantFirstName} {application.applicantLastName}</div>
-                                            <div className="flex items-center gap-1 text-sm opacity-50">
+                                            <div className="flex  gap-1 text-sm opacity-50">
                                                 <FaLocationDot className="w-5 h-5" />
                                                 {application.applicantLocation}
                                             </div>
@@ -177,6 +178,8 @@ const MyApplyList = () => {
                                 ))}
                             </tbody>
                         </table>
+                </div>
+                        
             )}
 
             {selectedApplication && (

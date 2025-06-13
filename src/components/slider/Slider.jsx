@@ -14,8 +14,8 @@ export default function App() {
                 {/* 1st - Explore */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image2.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>
-                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60">
-                        <div className="w-full text-center space-y-6 py-9">
+                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                        <div className="w-full text-center space-y-6 py-9 ">
                             <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Explore All Marathons in One Place
                             </h5>
@@ -32,7 +32,7 @@ export default function App() {
                 {/* 2nd - Add Marathon */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image1.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>
-                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60">
+                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
                             <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Add Your Own Marathon in Minutes
@@ -50,7 +50,7 @@ export default function App() {
                 {/* 3rd - Apply */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image3.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>
-                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60">
+                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
                             <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Apply to Join Any Marathon You Love
@@ -68,7 +68,7 @@ export default function App() {
                 {/* 4th - Dashboard */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image7.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>
-                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60">
+                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
                             <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 All-in-One Dashboard for Marathoners
@@ -86,7 +86,7 @@ export default function App() {
                 {/* 5th - Fun Element */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image6.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>
-                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60">
+                    <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
                             <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Running is Serious, But Fun Too!

@@ -48,12 +48,12 @@ const MarathonDetails = () => {
             {/* <Helmet>
                 <title>Marathon Details | RunFlow</title>
             </Helmet> */}
-            <h2 className="text-3xl font-bold text-center mb-2">Marathon Details</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">Marathon Details</h2>
             <div className="flex flex-col-reverse lg:flex-row justify-center items-center my-8 ">
                 {/* Marathon Image */}
                 <img
                     src={photo}
-                    className="w-full sm:w-3/4 md:w-1/2 lg:w-[50%] mx-auto rounded-lg shadow-lg"
+                    className="w-full sm:w-3/4 md:w-1/2 lg:w-[50%] mx-auto rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl"
                     alt={title}
                 />
 

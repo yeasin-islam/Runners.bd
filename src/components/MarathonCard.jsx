@@ -16,7 +16,7 @@ const MarathonCard = ({ marathon }) => {
   } = marathon || {}
 
   return (
-    <div className="card mx-4 lg:mx-0 bg-base-300 shadow-xl">
+    <div className="card mx-4 lg:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl">
       <figure>
         <img
           src={photo}
