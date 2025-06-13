@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import LoadingFallback from '../../components/shared/LoadingFallback';
 import { FaLocationDot } from 'react-icons/fa6';
+import Swal from 'sweetalert2';
 
 const MyApplyList = () => {
     const { user } = useAuth();
@@ -23,6 +24,31 @@ const MyApplyList = () => {
                 });
         }
     }, [user]);
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${import.meta.env.VITE_API_URL}/applications/${_id}`, {
+                    method: 'DELETE',
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.deletedCount) {
+                            Swal.fire('Deleted!', 'Your Application has been deleted.', 'success');
+                            setMyApplications(myApplications.filter((appliction) => appliction._id !== _id));
+                        }
+                    });
+            }
+        });
+    };
 
     if (loading) {
         return <LoadingFallback />;
@@ -96,7 +122,7 @@ const MyApplyList = () => {
                                 </td>
                                 <td className="flex gap-2 flex-col md:flex-row">
                                     <button className="btn btn-warning btn-sm">Update</button>
-                                    <button className="btn btn-outline btn-error btn-sm">Delete</button>
+                                    <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
                                 </td>
                             </tr>
                         ))}
