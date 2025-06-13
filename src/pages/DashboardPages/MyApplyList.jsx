@@ -3,12 +3,16 @@ import useAuth from '../../hooks/useAuth';
 import LoadingFallback from '../../components/shared/LoadingFallback';
 import { FaLocationDot } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import DatePicker from 'react-datepicker';
 
 const MyApplyList = () => {
     const { user } = useAuth();
     const [myApplications, setMyApplications] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const [selectedApplication, setSelectedApplication] = useState(null);
 
     useEffect(() => {
         if (user?.email) {
@@ -48,6 +52,42 @@ const MyApplyList = () => {
                     });
             }
         });
+    };
+
+    const openUpdateModal = async (id) => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/applications/${id}`);
+            const data = await res.json();
+            setSelectedApplication(data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleUpdateApplication = async (e, id) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const updatedData = Object.fromEntries(formData.entries());
+
+
+        axios.put(`${import.meta.env.VITE_API_URL}/applications/${id}`, updatedData)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    toast.success('Application updated!');
+                    setSelectedApplication(null);
+                    const updatedList = myApplications.map((application) =>
+                        application._id === id ? { ...application, ...updatedData } : application
+                    );
+                    setMyApplications(updatedList);
+                } else {
+                    toast.error('No changes made.');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error('Update failed.');
+            })
     };
 
     if (loading) {
@@ -121,7 +161,7 @@ const MyApplyList = () => {
                                     </div>
                                 </td>
                                 <td className="flex gap-2 flex-col md:flex-row">
-                                    <button className="btn btn-warning btn-sm">Update</button>
+                                    <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm">Update</button>
                                     <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
                                 </td>
                             </tr>
@@ -133,6 +173,69 @@ const MyApplyList = () => {
                     <div className="text-center py-10 text-error font-semibold">No applications found.</div>
                 )}
             </div>
+
+            {selectedApplication && (
+                <div className={`modal ${selectedApplication ? 'modal-open' : ''}`}>
+                    <div className="modal-box w-full max-w-2xl">
+                        <h3 className="font-bold text-2xl mb-4 text-center">Update Application</h3>
+                        <form
+                            onSubmit={(e) => handleUpdateApplication(e, selectedApplication._id)}
+                            className="space-y-4"
+                        >
+
+                            <div>
+                                <label className="fieldset-legend mb-1">Name</label>
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                                    <input type="text" name='applicantFirstName' defaultValue={selectedApplication.applicantFirstName} className="input w-full" placeholder="Type Your First Name" required />
+                                    <input type="text" name='applicantLastName' defaultValue={selectedApplication.applicantLastName} className="input w-full" placeholder="Type Your Last Name" required />
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label className="fieldset-legend mb-1">Your Location</label>
+                                <input type="text" name='applicantLocation' defaultValue={selectedApplication.applicantLocation} className="input w-full" placeholder="Type Your Location" required />
+                            </div>
+                            <div>
+                                <legend className="fieldset-legend mb-1">Contact Number</legend>
+                                <input type="text" name="applicantContactNumber" defaultValue={selectedApplication.applicantContactNumber} className="input input-bordered w-full" placeholder="Add Your Contact Number" required />
+                            </div>
+                            <div>
+                                <label className="fieldset-legend mb-1">Your Email</label>
+                                <input type="email" name='applicantEmail' className="input w-full" value={user.email} readOnly placeholder="Enter Your Email" required />
+                            </div>
+                            <div>
+                                <label className="fieldset-legend mb-1">Marathon Title</label>
+                                <input type="text" name="marathonTitle" value={selectedApplication.marathonTitle} readOnly className="input w-full" />
+                            </div>
+
+
+                            <div className="w-full">
+                                <label className="fieldset-legend mb-1">Marathon Date</label>
+                                <DatePicker
+                                    name="marathonDate"
+                                    selected={new Date(selectedApplication.marathonDate)}
+                                    readOnly className="input input-bordered w-full"
+                                />
+                            </div>
+
+
+                            <div className="modal-action">
+                                <button type="submit" className="btn btn-primary">
+                                    Update
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn"
+                                    onClick={() => setSelectedApplication(null)}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

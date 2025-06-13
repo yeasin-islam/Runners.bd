@@ -82,7 +82,7 @@ const MarathonRegistration = () => {
                         </div>
 
                     </div>
-                    
+
                     <div>
                         <label className="fieldset-legend mb-1">Your Location</label>
                         <input type="text" name='yourLocation' className="input w-full" placeholder="Type Your Location" required />
@@ -93,8 +93,7 @@ const MarathonRegistration = () => {
                     </div>
                     <div>
                         <label className="fieldset-legend mb-1">Your Email</label>
-                        <input type="email" name='contactNumber' className="input w-full" value={user.email}
-                            readOnlyplaceholder="Enter Your Email" required />
+                        <input type="email" name='email' className="input w-full" value={user.email} readOnly placeholder="Enter Your Email" required />
                     </div>
                     <div>
                         <label className="fieldset-legend mb-1">Marathon Title</label>
