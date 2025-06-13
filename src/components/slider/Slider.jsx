@@ -5,6 +5,7 @@ import 'swiper/css/navigation';
 import './styles.css';
 import { Navigation } from 'swiper/modules';
 import { Link } from 'react-router';
+import { ChevronsDown } from '../shared/ChevronsDown';
 
 export default function App() {
     return (
@@ -75,7 +76,7 @@ export default function App() {
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">
                                 Your personal space to manage everything — add events, track applications, and monitor performance. Smooth, simple, and secure.
                             </p>
-                            <Link to="/dashboard">
+                            <Link to="/dashboard/my-marathons">
                                 <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Visit Dashboard</button>
                             </Link>
                         </div>
@@ -93,8 +94,8 @@ export default function App() {
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">
                                 From setting records to making memories, marathons are more than races. Join challenges, unlock badges, and enjoy the runner’s life your way.
                             </p>
-                            <Link to="/marathons">
-                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Explore More</button>
+                            <Link>
+                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Explore More <ChevronsDown></ChevronsDown></button>
                             </Link>
                         </div>
                     </div>
