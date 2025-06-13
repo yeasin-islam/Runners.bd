@@ -69,7 +69,7 @@ const MyMarathonList = () => {
             console.error(err);
         }
     };
-    
+
     const handleUpdateMarathon = async (e, id) => {
         e.preventDefault();
         const form = e.target;
@@ -109,57 +109,61 @@ const MyMarathonList = () => {
                 </p>
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="table w-full bg-base-200 shadow rounded-md text-sm md:text-base">
-                    <thead className="bg-base-300">
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Location</th>
-                            <th>Distance</th>
-                            <th>Marathon Date</th>
-                            <th className="text-center">Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {myMarathons.map((marathon) => (
-                            <tr key={marathon._id}>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle h-12 w-12">
-                                            <img src={marathon.photo} alt="Marathon photo" />
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{marathon.title}</td>
-                                <td>{marathon.location}</td>
-                                <td>{marathon.distance}</td>
-                                <td>{marathon.marathonDate}</td>
-                                <td className="flex gap-2 flex-col md:flex-row">
-                                    <Link to={`/marathon-details/${marathon._id}`}>
-                                        <button className="btn btn-outline btn-sm">
-                                            Details
-                                        </button>
-                                    </Link>
-                                    <button
-                                        className="btn btn-warning btn-sm"
-                                        onClick={() => openUpdateModal(marathon._id)}
-                                    >
-                                        Update
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(marathon._id)}
-                                        className="btn btn-outline btn-error btn-sm"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
+            {myMarathons.length > 0 ? (
+                <div className="overflow-x-auto">
+                    <table className="table w-full bg-base-200 shadow rounded-md text-sm md:text-base">
+                        <thead className="bg-base-300">
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Location</th>
+                                <th>Distance</th>
+                                <th>Marathon Date</th>
+                                <th className="text-center">Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+
+                        <tbody>
+                            {myMarathons.map((marathon) => (
+                                <tr key={marathon._id}>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle h-12 w-12">
+                                                <img src={marathon.photo} alt="Marathon photo" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{marathon.title}</td>
+                                    <td>{marathon.location}</td>
+                                    <td>{marathon.distance}</td>
+                                    <td>{marathon.marathonDate}</td>
+                                    <td className="flex gap-2 flex-col md:flex-row">
+                                        <Link to={`/marathon-details/${marathon._id}`}>
+                                            <button className="btn btn-outline btn-sm">Details</button>
+                                        </Link>
+                                        <button
+                                            className="btn btn-warning btn-sm"
+                                            onClick={() => openUpdateModal(marathon._id)}
+                                        >
+                                            Update
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(marathon._id)}
+                                            className="btn btn-outline btn-error btn-sm"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <div className="text-center text-error font-semibold py-10 text-lg">
+                    You haven’t added any marathons yet.
+                </div>
+            )}
 
             {/* Update Modal */}
             {selectedMarathon && (

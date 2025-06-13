@@ -24,7 +24,8 @@ const Marathons = () => {
 
         // 🔍 Apply search filter
         const filtered = sortedMarathons.filter((marathon) =>
-            marathon.title.toLowerCase().includes(searchTerm.toLowerCase())
+            marathon.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            marathon.location.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
         if (showAll) {
@@ -58,7 +59,7 @@ const Marathons = () => {
                         <div className="">
                             <input
                                 type="text"
-                                placeholder="🔍Search by title..."
+                                placeholder="🔍Search by title & location..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="input input-bordered w-full max-w-xs"
@@ -77,11 +78,17 @@ const Marathons = () => {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10'>
-                    {displayMarathons.map(marathon => (
-                        <MarathonCard key={marathon._id} marathon={marathon} />
-                    ))}
-                </div>
+                {displayMarathons.length > 0 ? (
+                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10'>
+                        {displayMarathons.map(marathon => (
+                            <MarathonCard key={marathon._id} marathon={marathon} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-10 text-error font-semibold text-lg">
+                        No marathons found.
+                    </div>
+                )}
 
                 <div className="flex justify-center">
                     <Button
