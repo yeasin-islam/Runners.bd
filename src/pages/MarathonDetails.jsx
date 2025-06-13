@@ -1,5 +1,8 @@
 import { Link, useLoaderData } from 'react-router'
 import CountdownTimer from '../components/CountdownTimer';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase.config';
 
 const MarathonDetails = () => {
     const {
@@ -14,8 +17,27 @@ const MarathonDetails = () => {
         marathonDate,
         creatBy,
         createdAt,
-        totalRegistration
     } = useLoaderData();
+
+    const [registrationCount, setRegistrationCount] = useState(0);
+    const [currentUserEmail, setCurrentUserEmail] = useState('');
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setCurrentUserEmail(user.email);
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/applications/marathon/${_id}`)
+            .then(res => res.json())
+            .then(data => setRegistrationCount(data.length))
+            .catch(err => console.error("Failed to fetch registration count:", err));
+    }, [_id]);
 
     const today = new Date();
     const isRegistrationOpen =
@@ -51,26 +73,44 @@ const MarathonDetails = () => {
 
             <div className="space-y-4 mb-8">
 
-                <p className=""><span className="text-lg font-bold">Distance:</span> {distance}</p>
-                <p className=""><span className="text-lg font-bold">Registration Start:</span> {startReg}</p>
-                <p className=""><span className="text-lg font-bold">Registration End:</span> {endReg}</p>
-                <p className=""><span className="text-lg font-bold">Marathon Date:</span> {marathonDate}</p>
-                <p className=""><span className="text-lg font-bold">Location:</span> {location}</p>
-                <p className=""><span className="text-lg font-bold">Created At:</span> {createdAt}</p>
-                <p className=" "><span className="text-lg font-bold">Creat By:</span> {creatBy}</p>
-                <p className=" "><span className="text-lg font-bold">Total Registration:</span> {totalRegistration}</p>
+                <p className=""><span className="text-lg font-bold">🏃 Distance:</span> {distance}</p>
+                
+                <p className=""><span className="text-lg font-bold">📍 Location:</span> {location}</p>
+                <p className="">
+                    <span className="text-lg font-bold">🟢 Registration Start:</span>
+                    <span className="text-blue-600 font-semibold"> {startReg}</span>
+                </p>
 
+                <p className="">
+                    <span className="text-lg font-bold">🔴 Registration End:</span>
+                    <span className="text-red-600 font-semibold"> {endReg}</span>
+                </p>
+
+                <p className="">
+                    <span className="text-lg font-bold">🏁 Marathon Date:</span>
+                    <span className="text-emerald-600 font-semibold"> {marathonDate}</span>
+                </p>
+                <p className="">
+                    <span className="text-lg font-bold">🗓️ Created At:</span>
+                    <span className="text-gray-600 font-semibold"> {createdAt}</span>
+                </p>
+                <p className=""><span className="text-lg font-bold">👤 Created By:</span> {creatBy}</p>
+                <p className=""><span className="text-lg font-bold">🧑‍🤝‍🧑 Total Registration:</span> {registrationCount}</p>
             </div>
 
             <div className="card-actions justify-end">
-                {isRegistrationOpen ? (
-                    <Link to={`/marathon-registration/${_id}`}>
-                        <button className="btn btn-primary">Registration Now</button>
-                    </Link>
-                ) : (
+                {!isRegistrationOpen ? (
                     <button className="btn btn-disabled" disabled>
                         Registration Closed
                     </button>
+                ) : creatBy === currentUserEmail ? (
+                    <button className="btn btn-disabled" disabled>
+                        You Created This Marathon
+                    </button>
+                ) : (
+                    <Link to={`/marathon-registration/${_id}`}>
+                        <button className="btn btn-primary">Register Now</button>
+                    </Link>
                 )}
             </div>
         </div>

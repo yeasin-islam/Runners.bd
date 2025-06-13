@@ -48,7 +48,6 @@ const AddMarathon = () => {
             photo: form.photo.value,
             creatBy: user.email,
             createdAt : new Date().toISOString().split('T')[0],
-            totalRegistration: 0
         };
         // console.log('Form Submission:', addMarathonPost);
 
