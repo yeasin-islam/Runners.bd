@@ -2,60 +2,55 @@
   {
     "id": 1,
     "title": "Dhaka City Marathon",
-    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
+    "description": "Pushed my limits in the heart of Dhaka! The buzzing city streets, cheering crowd, and electric atmosphere made this race unforgettable.",
     "location": "Dhaka",
     "date": "2025-07-10",
     "distance": "10K",
-    "image": "https://i.ibb.co/ymQhr88J/download.jpg"
+    "image": "https://i.ibb.co/bMGZZfGz/2384191.jpg"
   },
   {
     "id": 2,
     "title": "Cox's Bazar Beach Run",
-    
-    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
+    "description": "Running along the world’s longest sea beach? Count me in! The ocean breeze and golden sand made it feel like a dream.",
     "location": "Cox's Bazar",
     "date": "2025-08-02",
-    "distance": "5K",
-    "image": "https://i.ibb.co/ThMn7yb/coxs-run.jpg"
+    "distance": "25K",
+    "image": "https://i.ibb.co/9mJ1rZpv/Image3.jpg"
   },
   {
     "id": 3,
     "title": "Chattogram Challenge",
-    
-    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
+    "description": "This race had it all — elevation, excitement, and energy. Chattogram brought the heat and I loved every second of it!",
     "location": "Chattogram",
     "date": "2025-08-25",
-    "distance": "25K",
-    "image": "https://i.ibb.co/WpdmpW3/chattogram-marathon.jpg"
+    "distance": "10K",
+    "image": "https://i.ibb.co/vvJB80P4/4105749.jpg"
   },
   {
     "id": 4,
     "title": "Sylhet Green Run",
-    
-    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
+    "description": "Nature lovers’ dream! The Sylhet trails were lush, peaceful, and full of positive vibes. A perfect blend of fitness and fresh air.",
     "location": "Sylhet",
     "date": "2025-09-05",
     "distance": "3K",
-    "image": "https://i.ibb.co/3TmzxjK/sylhet-run.jpg"
+    "image": "https://i.ibb.co/VcHm0Rv3/Image5.jpg"
   },
   {
     "id": 5,
     "title": "Barisal Riverside Dash",
-    
-    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
+    "description": "Scenic river views and warm community cheers made Barisal a standout! A smooth, scenic dash by the water.",
     "location": "Barisal",
     "date": "2025-09-20",
     "distance": "10K",
-    "image": "https://i.ibb.co/mN1fhhz/barisal-marathon.jpg"
+    "image": "https://i.ibb.co/4nQ3VMJM/portrait-cartoon-sports-team.jpg"
   },
   {
     "id": 6,
     "title": "Rajshahi Heritage Marathon",
-    
-    "description":"Loved every minute of the Chattogram Challenge. The route, crowd, and vibe were simply awesome.",
+    "description": "A journey through time! Running past Rajshahi’s historic sites was both inspiring and motivating. Proud to be part of it.",
     "location": "Rajshahi",
     "date": "2025-10-01",
     "distance": "5K",
-    "image": "https://i.ibb.co/MVsjPbY/rajshahi-run.jpg"
+    "image": "https://i.ibb.co/zdHVYPr/6272.jpg"
   }
 ]
