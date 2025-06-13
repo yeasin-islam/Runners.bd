@@ -81,13 +81,13 @@ const Navbar = () => {
                                             <summary className="cursor-pointer">Dashboard</summary>
                                             <ul className="pl-4">
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/add-marathon">
-                                                        Add Marathon
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/my-marathons">
+                                                        My Marathon List
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/my-marathons">
-                                                        My Marathon List
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/add-marathon">
+                                                        Add Marathon
                                                     </NavLink>
                                                 </li>
                                                 <li>
@@ -130,7 +130,7 @@ const Navbar = () => {
                                     } to="/marathons">Marathons</NavLink></li>
                                     <li className=" hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
-                                    } to="/dashboard">Dashboard</NavLink></li>
+                                    } to="/dashboard/my-marathons">Dashboard</NavLink></li>
                                     <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
                                     } to="/profile">Profile</NavLink></li>

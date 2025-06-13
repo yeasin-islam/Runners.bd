@@ -1,7 +1,6 @@
-import { Outlet, NavLink, useLocation } from 'react-router';
+import { Outlet, NavLink } from 'react-router';
 
 const Dashboard = () => {
-  const location = useLocation();
 
   return (
     <div className="drawer lg:drawer-open drawer-open-top">
@@ -15,16 +14,12 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 bg-base-200 text-base-content min-h-full">
-          
+
           <li>
             <NavLink
               to="/dashboard/my-marathons"
-              className={() =>
-                location.pathname.startsWith('/dashboard') &&
-                !location.pathname.includes('/add-marathon') &&
-                !location.pathname.includes('/my-applications')
-                  ? 'text-indigo-500 font-bold'
-                  : ''
+              className={({ isActive }) =>
+                isActive ? 'text-indigo-500 font-bold' : ''
               }
             >
               My Marathon List

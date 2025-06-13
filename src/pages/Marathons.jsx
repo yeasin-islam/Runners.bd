@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate, useLocation } from 'react-router';
 import MarathonCard from '../components/MarathonCard';
 import Button from '../components/shared/Button';
+import LoadingFallback from '../components/shared/LoadingFallback';
 
 const Marathons = () => {
     const marathons = useLoaderData();
@@ -42,6 +43,10 @@ const Marathons = () => {
         navigate(`?sort=${selectedSort}`);
     };
 
+    const loading = <>
+        <LoadingFallback></LoadingFallback>
+    </>
+
     return (
         <section className='bg-base-200'>
             <div className='fontStyle py-12 px-4 md:px-0 text-center container mx-auto'>
@@ -62,7 +67,7 @@ const Marathons = () => {
                                 placeholder="🔍Search by title & location..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="input input-bordered w-full max-w-xs"
+                                className="input input-bordered w-full max-w-sm"
                             />
                         </div>
                         <div className="">
@@ -78,17 +83,21 @@ const Marathons = () => {
                     </div>
                 </div>
 
+
                 {displayMarathons.length > 0 ? (
-                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10'>
-                        {displayMarathons.map(marathon => (
-                            <MarathonCard key={marathon._id} marathon={marathon} />
-                        ))}
-                    </div>
+                    <Suspense fallback={loading}>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10'>
+                            {displayMarathons.map(marathon => (
+                                <MarathonCard key={marathon._id} marathon={marathon} />
+                            ))}
+                        </div>
+                    </Suspense>
                 ) : (
                     <div className="text-center py-10 text-error font-semibold text-lg">
                         No marathons found.
                     </div>
                 )}
+
 
                 <div className="flex justify-center">
                     <Button

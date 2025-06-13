@@ -41,7 +41,7 @@ const Router = createBrowserRouter([
             {
                 path: '/marathons',
                 loader: marathonsLoader,
-                element: <Marathons />,
+                element: <PrivateRoute><Marathons /></PrivateRoute>,
                 hydrateFallbackElement: <LoadingFallback />,
             },
             {
