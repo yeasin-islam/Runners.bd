@@ -11,14 +11,29 @@ const Marathons = () => {
     const [displayMarathons, setDisplayMarathons] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const [sort, setSort] = useState(new URLSearchParams(location.search).get("sort") || "newest");
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        if (showAll) {
-            setDisplayMarathons(marathons);
-        } else {
-            setDisplayMarathons(marathons.slice(0, 6));
+        let sortedMarathons = [...marathons];
+
+        if (sort === "newest") {
+            sortedMarathons.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        } else if (sort === "oldest") {
+            sortedMarathons.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
         }
-    }, [showAll, marathons]);
+
+        // 🔍 Apply search filter
+        const filtered = sortedMarathons.filter((marathon) =>
+            marathon.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        if (showAll) {
+            setDisplayMarathons(filtered);
+        } else {
+            setDisplayMarathons(filtered.slice(0, 6));
+        }
+    }, [showAll, sort, marathons, searchTerm]);
+
 
     const handleSortChange = (e) => {
         const selectedSort = e.target.value;
@@ -39,15 +54,26 @@ const Marathons = () => {
                     </p>
 
                     {/* Sorting Dropdown */}
-                    <div className="flex justify-center mb-4">
-                        <select
-                            className="select select-bordered"
-                            value={sort}
-                            onChange={handleSortChange}
-                        >
-                            <option value="newest">Newest First</option>
-                            <option value="oldest">Oldest First</option>
-                        </select>
+                    <div className='flex justify-end gap-4'>
+                        <div className="">
+                            <input
+                                type="text"
+                                placeholder="🔍Search by title..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="input input-bordered w-full max-w-xs"
+                            />
+                        </div>
+                        <div className="">
+                            <select
+                                className="select select-bordered"
+                                value={sort}
+                                onChange={handleSortChange}
+                            >
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 

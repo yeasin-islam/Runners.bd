@@ -109,7 +109,7 @@ const MyApplyList = () => {
                 <div className="mt-4 max-w-sm mx-auto">
                     <input
                         type="text"
-                        placeholder="Search by title..."
+                        placeholder="🔍Search by title..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="input input-bordered w-full"
