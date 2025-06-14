@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
 import { Link } from 'react-router';
+import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 
 const MyMarathonList = () => {
     const { user } = useContext(AuthContext);
@@ -17,12 +18,13 @@ const MyMarathonList = () => {
     const [endReg, setEndReg] = useState(null);
     const [marathonDate, setMarathonDate] = useState(null);
 
+    const axiosSecure = UseAxiosSecure()
+
     useEffect(() => {
-        if (user.email) {
-            fetch(`${import.meta.env.VITE_API_URL}/my-marathons?email=${user.email}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setMyMarathons(data);
+        if (user.email && user.accessToken) {
+            axiosSecure.get(`/my-marathons?email=${user.email}`)
+                .then((res) => {
+                    setMyMarathons(res.data);
                     setLoading(false);
                 })
                 .catch((err) => {
@@ -30,7 +32,7 @@ const MyMarathonList = () => {
                     setLoading(false);
                 });
         }
-    }, [user]);
+    }, [user, axiosSecure]);
 
     const handleDelete = (_id) => {
         Swal.fire({

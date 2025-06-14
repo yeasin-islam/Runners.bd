@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
       .then((userCredential) => {
         const user = userCredential.user;
         // After signing up, update the profile with name
-        console.log("Signed up user:", user);
+        // console.log("Signed up user:", user);
         return updateProfile(user, { displayName: name });
       })
       .then(() => {
@@ -42,14 +42,14 @@ const AuthProvider = ({ children }) => {
 
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log("Signed in user:", userCredential.user); // ✅ Console log user
-      });
+    // .then((userCredential) => {
+    //   console.log("Signed in user:", userCredential.user);
+    // });
   };
 
   const updateUserProfile = async (displayName, photoURL) => {
     await updateProfile(auth.currentUser, { displayName, photoURL });
-    setUser({ ...auth.currentUser }); // Let onAuthStateChanged refresh if needed
+    setUser({ ...auth.currentUser });
   };
 
   const logOut = () => {
@@ -82,11 +82,17 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const signOutUser = () => {
+        setIsLoading(true);
+        return signOut(auth)
+    }
+
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setIsLoading(false);
+      // console.log("User in the auth state change", currentUser)
     });
 
     return () => unSubscribe();
@@ -101,6 +107,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     updateUserProfile,
     logOut,
+    signOutUser,
   };
 
   return (

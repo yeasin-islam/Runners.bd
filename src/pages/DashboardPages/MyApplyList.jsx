@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
+import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 
 const MyApplyList = () => {
     const { user } = useAuth();
@@ -13,13 +14,16 @@ const MyApplyList = () => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedApplication, setSelectedApplication] = useState(null);
+    const axiosSecure = UseAxiosSecure()
+
+    // console.log("token in the context", user.accessToken)
 
     useEffect(() => {
-        if (user?.email) {
-            fetch(`${import.meta.env.VITE_API_URL}/my-applications?applicantEmail=${user.email}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setMyApplications(data);
+        if (user?.email && user.accessToken) {
+            axiosSecure
+                .get(`/my-applications?applicantEmail=${user.email}`)
+                .then((res) => {
+                    setMyApplications(res.data);
                     setLoading(false);
                 })
                 .catch((err) => {
@@ -27,7 +31,9 @@ const MyApplyList = () => {
                     setLoading(false);
                 });
         }
-    }, [user]);
+    }, [user, axiosSecure]);
+
+
 
     const handleDelete = (_id) => {
         Swal.fire({
@@ -129,57 +135,57 @@ const MyApplyList = () => {
             ) : (
                 <div className='overflow-x-auto'>
                     <table className="table w-full text-sm rounded-md shadow bg-base-200 md:text-base">
-                            <thead className="bg-base-300">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Image</th>
-                                    <th>Title & Details</th>
-                                    <th>Distance</th>
-                                    <th>Marathon Date</th>
-                                    <th>Applicant Details</th>
-                                    <th className="text-center">Actions</th>
-                                </tr>
-                            </thead>
+                        <thead className="bg-base-300">
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Title & Details</th>
+                                <th>Distance</th>
+                                <th>Marathon Date</th>
+                                <th>Applicant Details</th>
+                                <th className="text-center">Actions</th>
+                            </tr>
+                        </thead>
 
-                            <tbody>
-                                {filteredApplications.map((application, index) => (
-                                    <tr className='transition duration-300 transform hover:scale-100 hover:shadow-2xl' key={application._id}>
-                                        <td>{index + 1}</td>
-                                        <td>
-                                            <div className="avatar">
-                                                <div className="w-12 h-12 mask mask-squircle">
-                                                    <img src={application.photo} alt={application.title} />
-                                                </div>
+                        <tbody>
+                            {filteredApplications.map((application, index) => (
+                                <tr className='transition duration-300 transform hover:scale-100 hover:shadow-2xl' key={application._id}>
+                                    <td>{index + 1}</td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="w-12 h-12 mask mask-squircle">
+                                                <img src={application.photo} alt={application.title} />
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <div className="font-bold">{application.title}</div>
-                                                <div className="flex items-center gap-1 text-sm opacity-50">
-                                                    <FaLocationDot className="w-5 h-5" />
-                                                    {application.location}
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{application.distance}</td>
-                                        <td>{application.marathonDate}</td>
-                                        <td>
-                                            <div className="font-bold">{application.applicantFirstName} {application.applicantLastName}</div>
-                                            <div className="flex gap-1 text-sm opacity-50">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div className="font-bold">{application.title}</div>
+                                            <div className="flex items-center gap-1 text-sm opacity-50">
                                                 <FaLocationDot className="w-5 h-5" />
-                                                {application.applicantLocation}
+                                                {application.location}
                                             </div>
-                                        </td>
-                                        <td className="flex flex-col gap-2 md:flex-row">
-                                            <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm">Update</button>
-                                            <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                        </div>
+                                    </td>
+                                    <td>{application.distance}</td>
+                                    <td>{application.marathonDate}</td>
+                                    <td>
+                                        <div className="font-bold">{application.applicantFirstName} {application.applicantLastName}</div>
+                                        <div className="flex gap-1 text-sm opacity-50">
+                                            <FaLocationDot className="w-5 h-5" />
+                                            {application.applicantLocation}
+                                        </div>
+                                    </td>
+                                    <td className="flex flex-col gap-2 md:flex-row">
+                                        <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm">Update</button>
+                                        <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-                        
+
             )}
 
             {selectedApplication && (

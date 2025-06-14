@@ -49,10 +49,10 @@ const Marathons = () => {
 
     return (
         <section className='bg-base-200'>
-            <div className='fontStyle py-12 px-4 md:px-0 text-center container mx-auto'>
+            <div className='container px-4 py-12 mx-auto text-center fontStyle md:px-0'>
                 {/* Section Tag & Description */}
                 <div className="mb-8">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+                    <h2 className="mb-2 text-3xl font-bold md:text-4xl lg:text-5xl">
                         All Marathons
                     </h2>
                     <p className="max-w-2xl mx-auto mb-8">
@@ -67,7 +67,7 @@ const Marathons = () => {
                                 placeholder="🔍Search by title & location..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="input input-bordered w-full max-w-sm"
+                                className="w-full max-w-sm input input-bordered"
                             />
                         </div>
                         <div className="">
@@ -86,14 +86,14 @@ const Marathons = () => {
 
                 {displayMarathons.length > 0 ? (
                     <Suspense fallback={loading}>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10'>
+                        <div className='grid grid-cols-1 gap-6 mb-10 sm:grid-cols-2 lg:grid-cols-3'>
                             {displayMarathons.map(marathon => (
                                 <MarathonCard key={marathon._id} marathon={marathon} />
                             ))}
                         </div>
                     </Suspense>
                 ) : (
-                    <div className="text-center py-10 text-error font-semibold text-lg">
+                    <div className="py-10 text-lg font-semibold text-center text-error">
                         No marathons found.
                     </div>
                 )}
