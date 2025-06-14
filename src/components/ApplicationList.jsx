@@ -5,7 +5,7 @@ const ApplicationList = ({ myApplicationPromise }) => {
 
     const applications = use(myApplicationPromise);
 
-    console.log(applications)
+    // console.log(applications)
 
     return (
         <div className='container mx-auto py-8'>

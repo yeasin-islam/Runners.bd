@@ -101,9 +101,9 @@ const MyMarathonList = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-10">
-            <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-5xl font-bold mb-2">Your Marathons</h2>
+        <div className="container px-4 py-10 mx-auto">
+            <div className="mb-8 text-center">
+                <h2 className="mb-2 text-3xl font-bold md:text-5xl">Your Marathons</h2>
                 <p className="text-sm md:text-base">
                     Here are all the marathons you created.
                 </p>
@@ -111,7 +111,7 @@ const MyMarathonList = () => {
 
             {myMarathons.length > 0 ? (
                 <div className="overflow-x-auto">
-                    <table className="table w-full bg-base-200 shadow rounded-md text-sm md:text-base">
+                    <table className="table w-full text-sm rounded-md shadow bg-base-200 md:text-base">
                         <thead className="bg-base-300">
                             <tr>
                                 <th>Image</th>
@@ -125,10 +125,10 @@ const MyMarathonList = () => {
 
                         <tbody>
                             {myMarathons.map((marathon) => (
-                                <tr className='transform transition duration-300 hover:scale-100 hover:shadow-2xl' key={marathon._id}>
+                                <tr className='transition duration-300 transform hover:scale-100 hover:shadow-2xl' key={marathon._id}>
                                     <td>
                                         <div className="avatar">
-                                            <div className="mask mask-squircle h-12 w-12">
+                                            <div className="w-12 h-12 mask mask-squircle">
                                                 <img src={marathon.photo} alt="Marathon photo" />
                                             </div>
                                         </div>
@@ -137,7 +137,7 @@ const MyMarathonList = () => {
                                     <td>{marathon.location}</td>
                                     <td>{marathon.distance}</td>
                                     <td>{marathon.marathonDate}</td>
-                                    <td className="flex gap-2 flex-col md:flex-row">
+                                    <td className="flex flex-col gap-2 md:flex-row">
                                         <Link to={`/marathon-details/${marathon._id}`}>
                                             <button className="btn btn-outline btn-sm">Details</button>
                                         </Link>
@@ -160,7 +160,7 @@ const MyMarathonList = () => {
                     </table>
                 </div>
             ) : (
-                <div className="text-center text-error font-semibold py-10 text-lg">
+                <div className="py-10 text-lg font-semibold text-center text-error">
                     You haven’t added any marathons yet.
                 </div>
             )}
@@ -168,28 +168,28 @@ const MyMarathonList = () => {
             {/* Update Modal */}
             {selectedMarathon && (
                 <div className={`modal ${selectedMarathon ? 'modal-open' : ''}`}>
-                    <div className="modal-box w-full max-w-2xl">
-                        <h3 className="font-bold text-2xl mb-4 text-center">Update Marathon</h3>
+                    <div className="w-full max-w-2xl modal-box">
+                        <h3 className="mb-4 text-2xl font-bold text-center">Update Marathon</h3>
                         <form
                             onSubmit={(e) => handleUpdateMarathon(e, selectedMarathon._id)}
                             className="space-y-4"
                         >
                             <div>
-                                <legend className="fieldset-legend mb-1">Matarhon Title</legend>
+                                <legend className="mb-1 fieldset-legend">Matarhon Title</legend>
                                 <input type="text" name="title"
                                     defaultValue={selectedMarathon.title}
-                                    className="input input-bordered w-full" required />
+                                    className="w-full input input-bordered" required />
                             </div>
                             <div>
-                                <legend className="fieldset-legend mb-1">Location</legend>
+                                <legend className="mb-1 fieldset-legend">Location</legend>
                                 <input type="text" name="location"
                                     defaultValue={selectedMarathon.location}
-                                    className="input input-bordered w-full" placeholder="Add Location" required />
+                                    className="w-full input input-bordered" placeholder="Add Location" required />
                             </div>
 
                             <div>
-                                <legend className="fieldset-legend mb-1">Distance</legend>
-                                <select name="distance" defaultValue={selectedMarathon.distance} className="select w-full">
+                                <legend className="mb-1 fieldset-legend">Distance</legend>
+                                <select name="distance" defaultValue={selectedMarathon.distance} className="w-full select">
                                     <option disabled>Select Distance</option>
                                     <option>3K</option>
                                     <option>10K</option>
@@ -198,43 +198,43 @@ const MyMarathonList = () => {
                             </div>
 
                             <div className="md:col-span-2">
-                                <legend className="fieldset-legend mb-1">Description</legend>
-                                <textarea name="description" className="textarea h-24 w-full" defaultValue={selectedMarathon.description} placeholder="Type a short Description" required></textarea>
+                                <legend className="mb-1 fieldset-legend">Description</legend>
+                                <textarea name="description" className="w-full h-24 textarea" defaultValue={selectedMarathon.description} placeholder="Type a short Description" required></textarea>
                             </div>
 
                             <div>
-                                <legend className="fieldset-legend mb-1">Image</legend>
-                                <input type="url" name="photo" defaultValue={selectedMarathon.photo} className="input input-bordered w-full" placeholder="Add a photo URL" required />
+                                <legend className="mb-1 fieldset-legend">Image</legend>
+                                <input type="url" name="photo" defaultValue={selectedMarathon.photo} className="w-full input input-bordered" placeholder="Add a photo URL" required />
                             </div>
 
-                            <div className='lg:flex justify-between gap-4'>
+                            <div className='justify-between gap-4 lg:flex'>
                                 <div className="w-full">
-                                    <legend className="fieldset-legend mb-1">Start Registration Date</legend>
+                                    <legend className="mb-1 fieldset-legend">Start Registration Date</legend>
                                     <DatePicker
                                         name="startReg"
                                         selected={startReg}
                                         onChange={(date) => setStartReg(date)}
-                                        className="input input-bordered w-full"
+                                        className="w-full input input-bordered"
                                         required
                                     />
                                 </div>
                                 <div className="w-full">
-                                    <legend className="fieldset-legend mb-1">End Registration Date</legend>
+                                    <legend className="mb-1 fieldset-legend">End Registration Date</legend>
                                     <DatePicker
                                         name="endReg"
                                         selected={endReg}
                                         onChange={(date) => setEndReg(date)}
-                                        className="input input-bordered w-full"
+                                        className="w-full input input-bordered"
                                         required
                                     />
                                 </div>
                                 <div className="w-full">
-                                    <legend className="fieldset-legend mb-1">Marathon Date</legend>
+                                    <legend className="mb-1 fieldset-legend">Marathon Date</legend>
                                     <DatePicker
                                         name="marathonDate"
                                         selected={marathonDate}
                                         onChange={(date) => setMarathonDate(date)}
-                                        className="input input-bordered w-full"
+                                        className="w-full input input-bordered"
                                         required
                                     />
                                 </div>

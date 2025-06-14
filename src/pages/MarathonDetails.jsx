@@ -16,6 +16,7 @@ const MarathonDetails = () => {
         endReg,
         marathonDate,
         creatBy,
+        creatorName,
         createdAt,
     } = useLoaderData();
 
@@ -44,12 +45,12 @@ const MarathonDetails = () => {
         new Date(startReg) <= today && today <= new Date(endReg);
 
     return (
-        <div className="popins w-full container mx-auto px-4 sm:px-6 lg:px-8 my-12">
+        <div className="container w-full px-4 mx-auto my-12 popins sm:px-6 lg:px-8">
             {/* <Helmet>
                 <title>Marathon Details | RunFlow</title>
             </Helmet> */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">Marathon Details</h2>
-            <div className="flex flex-col-reverse lg:flex-row justify-center items-center my-8 ">
+            <h2 className="mb-2 text-3xl font-bold text-center md:text-4xl lg:text-5xl">Marathon Details</h2>
+            <div className="flex flex-col-reverse items-center justify-center my-8 lg:flex-row ">
                 {/* Marathon Image */}
                 <img
                     src={photo}
@@ -60,45 +61,45 @@ const MarathonDetails = () => {
                 {/* Countdown Timer */}
                 <div className="w-full sm:w-3/4 md:w-1/2 lg:w-[40%] mx-auto mb-8 lg:mb-0 text-center">
                     <CountdownTimer marathonStart={marathonDate} />
-                    <p className="mt-4 text-lg text-gray-600 font-medium">
+                    <p className="mt-4 text-lg font-medium text-gray-600">
                         Time left until the marathon starts
                     </p>
                 </div>
             </div>
 
-            <div className="flex flex-col justify-between items-center mb-8">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">{title}</h1>
-                <p className="text-lg  mt-4 font-bold"> {description}</p>
+            <div className="flex flex-col items-center justify-between mb-8">
+                <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">{title}</h1>
+                <p className="mt-4 text-lg font-bold"> {description}</p>
             </div>
 
-            <div className="space-y-4 mb-8">
+            <div className="mb-8 space-y-4">
 
                 <p className=""><span className="text-lg font-bold">🏃 Distance:</span> {distance}</p>
                 
                 <p className=""><span className="text-lg font-bold">📍 Location:</span> {location}</p>
                 <p className="">
                     <span className="text-lg font-bold">🟢 Registration Start:</span>
-                    <span className="text-blue-600 font-semibold"> {startReg}</span>
+                    <span className="font-semibold text-blue-600"> {startReg}</span>
                 </p>
 
                 <p className="">
                     <span className="text-lg font-bold">🔴 Registration End:</span>
-                    <span className="text-red-600 font-semibold"> {endReg}</span>
+                    <span className="font-semibold text-red-600"> {endReg}</span>
                 </p>
 
                 <p className="">
                     <span className="text-lg font-bold">🏁 Marathon Date:</span>
-                    <span className="text-emerald-600 font-semibold"> {marathonDate}</span>
+                    <span className="font-semibold text-emerald-600"> {marathonDate}</span>
                 </p>
                 <p className="">
                     <span className="text-lg font-bold">🗓️ Created At:</span>
-                    <span className="text-gray-600 font-semibold"> {createdAt}</span>
+                    <span className="font-semibold text-gray-600"> {createdAt}</span>
                 </p>
-                <p className=""><span className="text-lg font-bold">👤 Created By:</span> {creatBy}</p>
+                <p className=""><span className="text-lg font-bold">👤 Created By:</span> <span className='font-bold text-md'>{creatorName}</span> ({creatBy})</p>
                 <p className=""><span className="text-lg font-bold">🧑‍🤝‍🧑 Total Registration:</span> {registrationCount}</p>
             </div>
 
-            <div className="card-actions justify-end">
+            <div className="justify-end card-actions">
                 {!isRegistrationOpen ? (
                     <button className="btn btn-disabled" disabled>
                         Registration Closed
