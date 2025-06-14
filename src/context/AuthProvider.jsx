@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { auth } from "../firebase.config.js";
 import { AuthContext } from "./AuthContext";
+import Swal from "sweetalert2";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -17,25 +18,13 @@ const AuthProvider = ({ children }) => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
-
-  const signInWithGithub = () => {
-    return signInWithPopup(auth).then((result) => {
-
-      const user = result.user;
-
-      const githubEmail = result._tokenResponse.email || result.user.email;
-      if (!user.email && githubEmail) {
-        updateProfile(user, {
-          email: githubEmail,
-        }).then(() => {
-          setUser({ ...user, email: githubEmail });
-        });
-      }
-
-      return result;
-    });
+  const signInWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        console.log("Google signed-in user:", result.user); // ✅ Log Google login
+      });
   };
+
 
   const signUp = (email, password, name) => {
     // Register user with email/password
@@ -43,6 +32,7 @@ const AuthProvider = ({ children }) => {
       .then((userCredential) => {
         const user = userCredential.user;
         // After signing up, update the profile with name
+        console.log("Signed up user:", user);
         return updateProfile(user, { displayName: name });
       })
       .then(() => {
@@ -50,7 +40,12 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+  const signIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("Signed in user:", userCredential.user); // ✅ Console log user
+      });
+  };
 
   const updateUserProfile = async (displayName, photoURL) => {
     await updateProfile(auth.currentUser, { displayName, photoURL });
@@ -58,9 +53,35 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    setIsLoading(false);
-    return signOut(auth);
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setIsLoading(true);
+        return signOut(auth)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Logged out!",
+              text: "You have been successfully logged out.",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          })
+          .catch((error) => {
+            console.error("Logout error:", error);
+            Swal.fire("Error", "Failed to log out.", "error");
+          });
+      }
+    });
   };
+
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -78,7 +99,6 @@ const AuthProvider = ({ children }) => {
     signUp,
     signIn,
     signInWithGoogle,
-    signInWithGithub,
     updateUserProfile,
     logOut,
   };
