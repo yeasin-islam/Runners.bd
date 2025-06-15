@@ -14,7 +14,6 @@ import MyMarathonList from "../pages/DashboardPages/MyMarathonList";
 import MyApplyList from "../pages/DashboardPages/MyApplyList";
 import MarathonDetails from "../pages/MarathonDetails";
 import MarathonRegistration from "../pages/MarathonRegistration";
-import { marathonsLoader } from "../components/shared/marathonsLoader";
 
 
 const Router = createBrowserRouter([
@@ -40,7 +39,6 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/marathons',
-                loader: marathonsLoader,
                 element: <PrivateRoute><Marathons /></PrivateRoute>,
                 hydrateFallbackElement: <LoadingFallback />,
             },
