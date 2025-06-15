@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 // import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -62,15 +63,15 @@ const Login = () => {
   };
 
   return (
-    <div className=" popins bg-base-200 p-10 rounded-xl shadow-2xl flex items-center justify-center">
-      {/* <Helmet>
+    <div className="flex items-center justify-center p-10 shadow-2xl popins bg-base-200 rounded-xl">
+      <Helmet>
         <title>
           Login | RunFlow
         </title>
-      </Helmet> */}
+      </Helmet>
       <div className="w-full max-w-sm">
-        <div className="card bg-base-100 shadow-2xl">
-          <h1 className="text-2xl font-bold text-center mt-5">Login</h1>
+        <div className="shadow-2xl card bg-base-100">
+          <h1 className="mt-5 text-2xl font-bold text-center">Login</h1>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <label className="label">Email</label>
@@ -78,50 +79,50 @@ const Login = () => {
                 type="email"
                 name="email"
                 onChange={handleChange}
-                className="input input-bordered w-full"
+                className="w-full input input-bordered"
                 placeholder="Email"
                 required
               />
 
-              <label className="label mt-2">Password</label>
+              <label className="mt-2 label">Password</label>
               <div className="relative flex items-center">
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   onChange={handleChange}
-                  className="input input-bordered w-full pr-10"
+                  className="w-full pr-10 input input-bordered"
                   placeholder="Password"
                   required
                 />
                 <span
-                  className="absolute right-3 cursor-pointer text-lg text-gray-500"
+                  className="absolute text-lg text-gray-500 cursor-pointer right-3"
                   onClick={() => setShowPassword(prev => !prev)}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
 
-              <div className="text-right mt-1">
+              <div className="mt-1 text-right">
                 <Link to="/reset-password" className="text-sm text-blue-500 hover:underline">
                   Forgot Password?
                 </Link>
               </div>
 
-              <button type="submit" className="btn btn-neutral mt-4 w-full">
+              <button type="submit" className="w-full mt-4 btn btn-neutral">
                 Login
               </button>
             </form>
 
             <div className="divider">OR</div>
 
-            <button onClick={handleGoogleLogin} className="btn w-full mb-2">
+            <button onClick={handleGoogleLogin} className="w-full mb-2 btn">
               <FaGoogle /> <span>Sign in with Google</span>
             </button>
 
-            <div className="text-center mt-4">
-              Not SingUp?{" "}
-              <Link className="underline text-blue-600" to="/singup">
-                SingUp
+            <div className="mt-4 text-center">
+              Not SignUp?{" "}
+              <Link className="text-blue-600 underline" to="/signup">
+                SignUp
               </Link>
             </div>
           </div>

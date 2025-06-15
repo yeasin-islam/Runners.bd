@@ -17,7 +17,7 @@ const UseAxiosSecure = () => {
     axiosInstance.interceptors.response.use(response => {
         return response;
     }, error => {
-        if (error.status === 401 || error.status === 401) {
+        if (error.status === 401 || error.status === 403) {
             signOutUser()
                 .then(() => {
                     console.log("signOutUser for 401 or 403 status code")

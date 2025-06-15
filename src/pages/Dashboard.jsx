@@ -1,11 +1,17 @@
+import { Helmet } from 'react-helmet-async';
 import { Outlet, NavLink } from 'react-router';
 
 const Dashboard = () => {
 
   return (
     <div className="drawer lg:drawer-open drawer-open-top">
+      <Helmet>
+        <title>
+          Dashboard | RunFlow
+        </title>
+      </Helmet>
       <input type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
+      <div className="flex flex-col drawer-content">
         <div className="p-4">
           <Outlet />
         </div>
@@ -13,7 +19,7 @@ const Dashboard = () => {
 
       <div className="drawer-side">
         <label className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-200 text-base-content min-h-full">
+        <ul className="min-h-full p-4 menu w-80 bg-base-200 text-base-content">
 
           <li>
             <NavLink

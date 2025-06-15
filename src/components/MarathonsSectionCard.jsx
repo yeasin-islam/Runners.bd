@@ -15,24 +15,27 @@ const MarathonsSectionCard = ({ marathonPost }) => {
         createdAt,
         marathonDate, } = marathonPost;
     return (
-        <div className="card mx-4 lg:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div className="mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 hover:scale-105 hover:shadow-xl">
             <figure>
                 <img
                     src={photo}
                     alt={title}
-                    className="h-48 w-full object-cover"
+                    className="object-cover w-full h-48"
                 />
             </figure>
-            <div className="card-body text-left">
+            <div className="text-left card-body">
                 <h2 className="text-xl font-bold text-center"> {title}</h2>
-                <p className="text-gray-500 text-center">{description}</p>
+                <p className="text-center text-gray-500">{description}</p>
                 <p className='font-medium'>🏃 Distance: {distance}</p>
                 <p className='font-medium'>📍 Location: {location}</p>
-                <h4>📅 Registration Start: <span className='text-[#09982F] font-semibold'> {startReg}</span></h4>
-                <h4>📅 Registration End: <span className='text-[#09982F] font-semibold'> {endReg}</span></h4>
-                <h4>📅 Marathon Date: <span className='text-[#09982F] font-semibold'> {marathonDate}</span></h4>
-                <p>🕒 Created: {createdAt}</p>
-                <div className="card-actions justify-end mt-4">
+                <h4>🟢 Registration Start:
+                    <span className="font-semibold text-blue-600"> {startReg}</span></h4>
+                <h4>🔴 Registration End:
+                    <span className="font-semibold text-red-600"> {endReg}</span></h4>
+                <h4>🏁 Marathon Date:
+                    <span className="font-semibold text-emerald-600"> {marathonDate}</span></h4>
+                <p>🕒 Created: <span className="text-gray-600"> {createdAt}</span></p>
+                <div className="justify-end mt-4 card-actions">
                     <Link to={`/marathon-details/${_id}`}>
                         <button className="btn btn-primary">Details</button>
                     </Link>

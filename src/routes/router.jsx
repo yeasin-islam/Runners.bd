@@ -4,7 +4,7 @@ import MainLayout from "../Layout/MainLayout";
 import Login from "../pages/Login";
 import ErrorPage from "../pages/ErrorPage";
 import LoadingFallback from "../components/shared/LoadingFallback";
-import SingUp from "../pages/SingUp";
+import SignUp from "../pages/SignUp";
 import Marathons from "../pages/Marathons";
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
@@ -34,8 +34,8 @@ const Router = createBrowserRouter([
                 element: <Login />,
             },
             {
-                path: '/singup',
-                element: <SingUp />,
+                path: '/signup',
+                element: <SignUp />,
             },
             {
                 path: '/marathons',
@@ -44,19 +44,19 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Dashboard /></PrivateRoute>,
+                element: <Dashboard />,
                 children: [
                     {
                         path: 'add-marathon',
-                        element: <AddMarathon />
+                        element: <PrivateRoute><AddMarathon /></PrivateRoute>
                     },
                     {
                         path: 'my-marathons',
-                        element: <MyMarathonList />
+                        element: <PrivateRoute><MyMarathonList /></PrivateRoute>
                     },
                     {
                         path: 'my-applications',
-                        element: <MyApplyList />
+                        element: <PrivateRoute><MyApplyList /></PrivateRoute>
                     },
                 ]
             },
@@ -66,7 +66,6 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/marathon-details/:id',
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/marathons/${params.id}`),
                 element: <PrivateRoute><MarathonDetails /></PrivateRoute>,
             },
             {

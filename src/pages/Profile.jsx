@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 // import { useNavigate } from "react-router";
 // import { Helmet } from "react-helmet-async";
 import { FaUserCircle } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
@@ -27,72 +28,72 @@ const Profile = () => {
   };
 
   return (
-    <section className="popins bg-base-200 p-10 rounded-xl shadow-2xl flex items-center justify-center">
-      {/* <Helmet>
-          <title>Profile | RunFlow</title>
-        </Helmet> */}
+    <section className="flex items-center justify-center p-10 shadow-2xl popins bg-base-200 rounded-xl">
+      <Helmet>
+        <title>Profile | RunFlow</title>
+      </Helmet>
       <div className="w-full max-w-sm">
-        <div className="card bg-base-100 shadow-2xl">
-          <h1 className="text-4xl text-center font-bold mt-4">Profile</h1>
+        <div className="shadow-2xl card bg-base-100">
+          <h1 className="pt-6 text-3xl font-bold text-center lg:text-5xl md:text-4xl">Profile</h1>
 
           <div className="card-body">
             {user && (
-            <div className="space-y-2">
-              {/* Display profile image or fallback image */}
-              <div className="h-20 w-20 rounded-full mx-auto bg-gray-300 flex items-center justify-center ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
-                {user.photoURL ? (
-                  <img
-                    className="w-full h-full object-cover"
-                    src={user.photoURL}
-                    alt="Profile"
-                  />
-                ) : (
-                  <FaUserCircle className="text-6xl text-gray-600" />
-                )}
+              <div className="space-y-2 ">
+                {/* Display profile image or fallback image */}
+                <div className="flex items-center justify-center w-20 h-20 mx-auto overflow-hidden bg-gray-300 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  {user.photoURL ? (
+                    <img
+                      className="object-cover w-full h-full"
+                      src={user.photoURL}
+                      alt="Profile"
+                    />
+                  ) : (
+                    <FaUserCircle className="text-6xl text-gray-600" />
+                  )}
+                </div>
+
+                <div className="text-lg font-semibold text-center">{user.displayName || "No Name Set"}</div>
+                <div className="text-sm text-center opacity-70">
+                  {user.email || "Email not available"}
+                </div>
               </div>
+            )}
 
-              <div className="text-lg font-semibold text-center">{user.displayName || "No Name Set"}</div>
-              <div className="text-sm opacity-70 text-center">
-                {user.email || "Email not available"}
-              </div>
-            </div>
-          )}
-
-          <div className="mt-6 text-center">
-            <button onClick={() => setShow(!show)} className="btn btn-success">
-              {show ? "Cancel" : "Edit Profile"}
-            </button>
-          </div>
-
-          {show && (
-            <form onSubmit={handleProfileUpdate} className="mt-6 space-y-4 text-left">
-              <fieldset className="fieldset">
-                <label className="label">Name</label>
-                <input
-                  defaultValue={user?.displayName}
-                  type="text"
-                  name="displayName"
-                  className="input w-full"
-                  placeholder="Name"
-                  required
-                />
-
-                <label className="label">Photo URL</label>
-                <input
-                  defaultValue={user?.photoURL}
-                  type="text"
-                  name="photoURL"
-                  className="input w-full"
-                  placeholder="Photo URL"
-                  required
-                />
-              </fieldset>
-
-              <button type="submit" className="btn btn-neutral w-full">
-                Update Profile
+            <div className="mt-6 text-center">
+              <button onClick={() => setShow(!show)} className="btn btn-success">
+                {show ? "Cancel" : "Edit Profile"}
               </button>
-            </form>
-          )}
+            </div>
+
+            {show && (
+              <form onSubmit={handleProfileUpdate} className="mt-6 space-y-4 text-left">
+                <fieldset className="fieldset">
+                  <label className="label">Name</label>
+                  <input
+                    defaultValue={user?.displayName}
+                    type="text"
+                    name="displayName"
+                    className="w-full input"
+                    placeholder="Name"
+                    required
+                  />
+
+                  <label className="label">Photo URL</label>
+                  <input
+                    defaultValue={user?.photoURL}
+                    type="url"
+                    name="photoURL"
+                    className="w-full input"
+                    placeholder="Photo URL"
+                    required
+                  />
+                </fieldset>
+
+                <button type="submit" className="w-full btn btn-neutral">
+                  Update Profile
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import UseAxiosSecure from '../../hooks/UseAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const MyApplyList = () => {
     const { user } = useAuth();
@@ -108,149 +109,157 @@ const MyApplyList = () => {
     );
 
     return (
-        <div className="container px-4 py-10 mx-auto">
-            <div className="mb-6 text-center">
-                <h2 className="mb-2 text-3xl font-bold md:text-5xl">My Applications</h2>
-                <p className='font-bold text-md'>You Applied Marathon So Far: {myApplications.length}</p>
+        <>
+            <Helmet>
+                <title>
+                    My Apply List | RunFlow
+                </title>
+            </Helmet>
+            <div className="container px-4 py-10 mx-auto">
+                <div className="mb-6 text-center">
+                    <h2 className="mb-2 text-3xl font-bold md:text-5xl">My Applications</h2>
+                    <p className='font-bold text-md'>You Applied Marathon So Far: {myApplications.length}</p>
 
-                <div className="max-w-sm mx-auto mt-4">
-                    <input
-                        type="text"
-                        placeholder="🔍Search by title, location or distance..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full input input-bordered"
-                    />
-                </div>
-            </div>
-
-            {myApplications.length === 0 ? (
-                <div className="py-10 font-semibold text-center text-error">
-                    You haven’t applied to any marathons yet.
-                </div>
-            ) : filteredApplications.length === 0 ? (
-                <div className="py-10 font-semibold text-center text-error">
-                    No applications matched your search.
-                </div>
-            ) : (
-                <div className='overflow-x-auto'>
-                    <table className="table w-full text-sm rounded-md shadow bg-base-200 md:text-base">
-                        <thead className="bg-base-300">
-                            <tr>
-                                <th>#</th>
-                                <th>Image</th>
-                                <th>Title & Details</th>
-                                <th>Distance</th>
-                                <th>Marathon Date</th>
-                                <th>Applicant Details</th>
-                                <th className="text-center">Actions</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {filteredApplications.map((application, index) => (
-                                <tr className='transition duration-300 transform hover:scale-100 hover:shadow-2xl' key={application._id}>
-                                    <td>{index + 1}</td>
-                                    <td>
-                                        <div className="avatar">
-                                            <div className="w-12 h-12 mask mask-squircle">
-                                                <img src={application.photo} alt={application.title} />
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <div className="font-bold">{application.title}</div>
-                                            <div className="flex items-center gap-1 text-sm opacity-50">
-                                                <FaLocationDot className="w-5 h-5" />
-                                                {application.location}
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{application.distance}</td>
-                                    <td>{application.marathonDate}</td>
-                                    <td>
-                                        <div className="font-bold">{application.applicantFirstName} {application.applicantLastName}</div>
-                                        <div className="flex gap-1 text-sm opacity-50">
-                                            <FaLocationDot className="w-5 h-5" />
-                                            {application.applicantLocation}
-                                        </div>
-                                    </td>
-                                    <td className="flex flex-col gap-2 md:flex-row">
-                                        <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm">Update</button>
-                                        <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-
-            )}
-
-            {selectedApplication && (
-                <div className={`modal ${selectedApplication ? 'modal-open' : ''}`}>
-                    <div className="w-full max-w-2xl modal-box">
-                        <h3 className="mb-4 text-2xl font-bold text-center">Update Application</h3>
-                        <form
-                            onSubmit={(e) => handleUpdateApplication(e, selectedApplication._id)}
-                            className="space-y-4"
-                        >
-
-                            <div>
-                                <label className="mb-1 fieldset-legend">Name</label>
-                                <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-                                    <input type="text" name='applicantFirstName' defaultValue={selectedApplication.applicantFirstName} className="w-full input" placeholder="Type Your First Name" required />
-                                    <input type="text" name='applicantLastName' defaultValue={selectedApplication.applicantLastName} className="w-full input" placeholder="Type Your Last Name" required />
-                                </div>
-
-                            </div>
-
-                            <div>
-                                <label className="mb-1 fieldset-legend">Your Location</label>
-                                <input type="text" name='applicantLocation' defaultValue={selectedApplication.applicantLocation} className="w-full input" placeholder="Type Your Location" required />
-                            </div>
-                            <div>
-                                <legend className="mb-1 fieldset-legend">Contact Number</legend>
-                                <input type="text" name="applicantContactNumber" defaultValue={selectedApplication.applicantContactNumber} className="w-full input input-bordered" placeholder="Add Your Contact Number" required />
-                            </div>
-                            <div>
-                                <label className="mb-1 fieldset-legend">Your Email</label>
-                                <input type="email" name='applicantEmail' className="w-full input" value={user.email} readOnly placeholder="Enter Your Email" required />
-                            </div>
-                            <div>
-                                <label className="mb-1 fieldset-legend">Marathon Title</label>
-                                <input type="text" name="marathonTitle" value={selectedApplication.marathonTitle} readOnly className="w-full input" />
-                            </div>
-
-
-                            <div className="w-full">
-                                <label className="mb-1 fieldset-legend">Marathon Date</label>
-                                <DatePicker
-                                    name="marathonDate"
-                                    selected={new Date(selectedApplication.marathonDate)}
-                                    readOnly className="w-full input input-bordered"
-                                />
-                            </div>
-
-
-                            <div className="modal-action">
-                                <button type="submit" className="btn btn-primary">
-                                    Update
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn"
-                                    onClick={() => setSelectedApplication(null)}
-                                >
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
+                    <div className="max-w-sm mx-auto mt-4">
+                        <input
+                            type="text"
+                            placeholder="🔍Search by title, location or distance..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full input input-bordered"
+                        />
                     </div>
                 </div>
-            )}
-        </div>
+
+                {myApplications.length === 0 ? (
+                    <div className="py-10 font-semibold text-center text-error">
+                        You haven’t applied to any marathons yet.
+                    </div>
+                ) : filteredApplications.length === 0 ? (
+                    <div className="py-10 font-semibold text-center text-error">
+                        No applications matched your search.
+                    </div>
+                ) : (
+                    <div className='overflow-x-auto'>
+                        <table className="table w-full text-sm rounded-md shadow bg-base-200 md:text-base">
+                            <thead className="bg-base-300">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Title & Details</th>
+                                    <th>Distance</th>
+                                    <th>Marathon Date</th>
+                                    <th>Applicant Details</th>
+                                    <th className="text-center">Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {filteredApplications.map((application, index) => (
+                                    <tr className='transition duration-300 transform hover:scale-100 hover:shadow-2xl' key={application._id}>
+                                        <td>{index + 1}</td>
+                                        <td>
+                                            <div className="avatar">
+                                                <div className="w-12 h-12 mask mask-squircle">
+                                                    <img src={application.photo} alt={application.title} />
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div className="font-bold">{application.title}</div>
+                                                <div className="flex items-center gap-1 text-sm opacity-50">
+                                                    <FaLocationDot className="w-5 h-5" />
+                                                    {application.location}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{application.distance}</td>
+                                        <td>{application.marathonDate}</td>
+                                        <td>
+                                            <div className="font-bold">{application.applicantFirstName} {application.applicantLastName}</div>
+                                            <div className="flex gap-1 text-sm opacity-50">
+                                                <FaLocationDot className="w-5 h-5" />
+                                                {application.applicantLocation}
+                                            </div>
+                                        </td>
+                                        <td className="flex flex-col gap-2 md:flex-row">
+                                            <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm">Update</button>
+                                            <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                )}
+
+                {selectedApplication && (
+                    <div className={`modal ${selectedApplication ? 'modal-open' : ''}`}>
+                        <div className="w-full max-w-2xl modal-box">
+                            <h3 className="mb-4 text-2xl font-bold text-center">Update Application</h3>
+                            <form
+                                onSubmit={(e) => handleUpdateApplication(e, selectedApplication._id)}
+                                className="space-y-4"
+                            >
+
+                                <div>
+                                    <label className="mb-1 fieldset-legend">Name</label>
+                                    <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+                                        <input type="text" name='applicantFirstName' defaultValue={selectedApplication.applicantFirstName} className="w-full input" placeholder="Type Your First Name" required />
+                                        <input type="text" name='applicantLastName' defaultValue={selectedApplication.applicantLastName} className="w-full input" placeholder="Type Your Last Name" required />
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <label className="mb-1 fieldset-legend">Your Location</label>
+                                    <input type="text" name='applicantLocation' defaultValue={selectedApplication.applicantLocation} className="w-full input" placeholder="Type Your Location" required />
+                                </div>
+                                <div>
+                                    <legend className="mb-1 fieldset-legend">Contact Number</legend>
+                                    <input type="text" name="applicantContactNumber" defaultValue={selectedApplication.applicantContactNumber} className="w-full input input-bordered" placeholder="Add Your Contact Number" required />
+                                </div>
+                                <div>
+                                    <label className="mb-1 fieldset-legend">Your Email</label>
+                                    <input type="email" name='applicantEmail' className="w-full input" value={user.email} readOnly placeholder="Enter Your Email" required />
+                                </div>
+                                <div>
+                                    <label className="mb-1 fieldset-legend">Marathon Title</label>
+                                    <input type="text" name="marathonTitle" value={selectedApplication.marathonTitle} readOnly className="w-full input" />
+                                </div>
+
+
+                                <div className="w-full">
+                                    <label className="mb-1 fieldset-legend">Marathon Date</label>
+                                    <DatePicker
+                                        name="marathonDate"
+                                        selected={new Date(selectedApplication.marathonDate)}
+                                        readOnly className="w-full input input-bordered"
+                                    />
+                                </div>
+
+
+                                <div className="modal-action">
+                                    <button type="submit" className="btn btn-primary">
+                                        Update
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn"
+                                        onClick={() => setSelectedApplication(null)}
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </>
+
     );
 };
 

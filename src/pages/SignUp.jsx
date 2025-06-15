@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 // import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { signUp, signInWithGoogle, updateUserProfile } = useContext(AuthContext);
@@ -96,14 +97,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="popins bg-base-200 p-10 rounded-xl flex items-center justify-center min-h-screen">
-      {/* <Helmet>
+    <div className="flex items-center justify-center min-h-screen p-10 popins bg-base-200 rounded-xl">
+      <Helmet>
         <title>SignUp | RunFlow</title>
-      </Helmet> */}
+      </Helmet>
 
       <div className="w-full max-w-sm">
-        <div className="card bg-base-100 shadow-2xl">
-          <h1 className="text-2xl font-bold text-center mt-5">Sign Up</h1>
+        <div className="shadow-2xl card bg-base-100">
+          <h1 className="mt-5 text-2xl font-bold text-center">Sign Up</h1>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <label className="label">Name</label>
@@ -116,7 +117,7 @@ const SignUp = () => {
                 required
               />
 
-              <label className="label mt-2">Email</label>
+              <label className="mt-2 label">Email</label>
               <input
                 type="email"
                 name="email"
@@ -126,25 +127,25 @@ const SignUp = () => {
                 required
               />
 
-              <label className="label mt-2">Password</label>
+              <label className="mt-2 label">Password</label>
               <div className="relative flex items-center">
                 <input
                   type={passwordVisible ? "text" : "password"}
                   name="password"
                   onChange={handleChange}
-                  className="input input-bordered pr-10"
+                  className="pr-10 input input-bordered"
                   placeholder="Password"
                   required
                 />
                 <span
-                  className="absolute right-8 cursor-pointer text-lg text-gray-500"
+                  className="absolute text-lg text-gray-500 cursor-pointer right-8"
                   onClick={() => setPasswordVisible(prev => !prev)}
                 >
                   {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
 
-              <label className="label mt-2">Image URL (Optional)</label>
+              <label className="mt-2 label">Image URL (Optional)</label>
               <input
                 type="url"
                 name="imageUrl"
@@ -153,20 +154,20 @@ const SignUp = () => {
                 placeholder="Image URL"
               />
 
-              <button type="submit" className="btn btn-neutral mt-4 w-full">
+              <button type="submit" className="w-full mt-4 btn btn-neutral">
                 Sign Up
               </button>
             </form>
 
             <div className="divider">OR</div>
 
-            <button onClick={handleGoogleSignup} className="btn w-full mb-2">
+            <button onClick={handleGoogleSignup} className="w-full mb-2 btn">
               <FaGoogle /> <span>Sign Up with Google</span>
             </button>
 
-            <div className="text-center mt-4">
+            <div className="mt-4 text-center">
               Already signed up?{" "}
-              <Link className="underline text-blue-600" to="/login">
+              <Link className="text-blue-600 underline" to="/login">
                 Login
               </Link>
             </div>

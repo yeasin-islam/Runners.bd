@@ -33,7 +33,7 @@ const Navbar = () => {
 
             {/* sun icon */}
             <svg
-                className="swap-off h-7 w-7 fill-current"
+                className="fill-current swap-off h-7 w-7"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
@@ -42,7 +42,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-                className="swap-on h-7 w-7 fill-current"
+                className="fill-current swap-on h-7 w-7"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
@@ -54,24 +54,24 @@ const Navbar = () => {
 
     return (
         <div className="popins bg-base-300">
-            <div className="container mx-auto flex justify-between py-2 navbar">
-                <div className="navbar-start gap-2">
+            <div className="container flex justify-between py-2 mx-auto navbar">
+                <div className="gap-2 navbar-start">
                     <div className="bg-base-300 dropdown lg:hidden">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
                             </svg>
                         </div>
 
                         <ul
                             tabIndex={0}
-                            className="bg-base-300 menu menu-sm dropdown-content bg-base-100 rounded z-50 mt-3 w-52 p-2 space-y-2 shadow"
+                            className="z-50 p-2 mt-3 space-y-2 rounded shadow bg-base-300 menu menu-sm dropdown-content bg-base-100 w-52"
                         >
                             <li>
                                 <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/">Home</NavLink>
                             </li>
                             <li>
-                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/marathons">Marathons</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/marathons">All Marathon</NavLink>
                             </li>
 
                             {user ? (
@@ -110,9 +110,9 @@ const Navbar = () => {
                     </div>
 
                     <NavLink to="/">
-                        <div className="flex justify-start items-center">
+                        <div className="flex items-center justify-start">
                             <p className="font-festive text-4xl lg:flex hidden  items-center font-bold text-[#ff1850] ">RunFlow</p>
-                            <img className="h-11 w-16 lg:-ml-4" src="/assets/WebLogo.png" alt="RunFlow" />
+                            <img className="w-16 h-11 lg:-ml-4" src="/assets/WebLogo.png" alt="RunFlow" />
                         </div>
                     </NavLink>
                 </div>
@@ -122,13 +122,13 @@ const Navbar = () => {
                         <>
                             <div className="navbar-center">
                                 <ul className="flex items-center gap-3 px-1">
-                                    <li className=" hidden lg:flex"><NavLink className={({ isActive }) =>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
                                     } to="/">Home</NavLink></li>
-                                    <li className=" hidden lg:flex"><NavLink className={({ isActive }) =>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
-                                    } to="/marathons">Marathons</NavLink></li>
-                                    <li className=" hidden lg:flex"><NavLink className={({ isActive }) =>
+                                    } to="/marathons">All Marathon</NavLink></li>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
                                     } to="/dashboard/my-marathons">Dashboard</NavLink></li>
                                     <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
@@ -138,10 +138,10 @@ const Navbar = () => {
                                     <div className="relative group">
                                         {/* Avatar and trigger */}
                                         <div className="flex items-center gap-2 cursor-pointer">
-                                            <div className="w-8 h-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
+                                            <div className="w-8 h-8 overflow-hidden rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                                 {user.photoURL ? (
                                                     <img
-                                                        className="w-full h-full object-cover"
+                                                        className="object-cover w-full h-full"
                                                         src={user.photoURL}
                                                         alt="Profile"
                                                     />
@@ -152,7 +152,7 @@ const Navbar = () => {
                                         </div>
 
                                         {/* Hover menu */}
-                                        <div className="absolute right-0 mt-2 bg-base-100 rounded-md shadow-lg p-4  w-56 opacity-0 group-hover:opacity-100 group-hover:visible invisible transition duration-200 z-50"
+                                        <div className="absolute right-0 z-50 invisible w-56 p-4 mt-2 transition duration-200 rounded-md shadow-lg opacity-0 bg-base-100 group-hover:opacity-100 group-hover:visible"
                                             onMouseEnter={(e) => e.stopPropagation()}
                                             onMouseLeave={(e) => e.stopPropagation()}>
                                             <p className="font-semibold">{user.displayName || "No Name"}</p>
@@ -160,8 +160,8 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     <li>
-                                        <button onClick={logOut} className="btn btn-error hidden lg:flex">
-                                            Logout
+                                        <button onClick={logOut} className="hidden btn btn-error lg:flex">
+                                            Log Out
                                         </button>
                                     </li>
                                     <li className="-ml-2">
@@ -176,15 +176,15 @@ const Navbar = () => {
                         <>
                             <div className="navbar-center">
                                 <ul className="flex items-center gap-3 px-1">
-                                    <li className=" hidden lg:flex"><NavLink className={({ isActive }) =>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
                                     } to="/">Home</NavLink></li>
-                                    <li className=" hidden lg:flex"><NavLink className={({ isActive }) =>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
-                                    } to="/marathons">Marathons</NavLink></li>
+                                    } to="/marathons">All Marathon</NavLink></li>
                                     <p>{SunMun}</p>
                                     <li><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">Login</NavLink></li>
-                                    <li><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/singup">SingUp</NavLink></li>
+                                    <li><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">SignUp</NavLink></li>
                                 </ul>
                             </div>
 

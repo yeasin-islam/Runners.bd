@@ -7,16 +7,17 @@ import AuthProvider from './context/AuthProvider.jsx'
 // import CartProvider from './providers/CartProvider.jsx'
 import { Toaster } from 'react-hot-toast'
 import Router from './routes/router.jsx'
+import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')).render(
-  // <HelmetProvider>
+  <HelmetProvider>
     <StrictMode>
       {/* <CartProvider> */}
-        <AuthProvider>
-          <RouterProvider router={Router} />
-          <Toaster position="top-right" />
-        </AuthProvider>
+      <AuthProvider>
+        <RouterProvider router={Router} />
+        <Toaster position="top-right" />
+      </AuthProvider>
       {/* </CartProvider> */}
     </StrictMode>
-  // </HelmetProvider>
+  </HelmetProvider>
 )

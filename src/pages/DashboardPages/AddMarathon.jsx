@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
-// import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 
 const AddMarathon = () => {
     const [user, setUser] = useState({ email: '', displayName: '' });
@@ -75,11 +75,11 @@ const AddMarathon = () => {
 
     return (
         <section className='container px-4 mx-auto my-8'>
-            {/* <Helmet>
+            <Helmet>
                 <title>
                     Add Marathon | RunFlow
                 </title>
-            </Helmet> */}
+            </Helmet>
             <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300">
                 <div className='w-full max-w-2xl px-4 mt-6 text-center'>
                     <h2 className="my-4 text-3xl font-bold md:text-4xl">Add Your Marathon</h2>

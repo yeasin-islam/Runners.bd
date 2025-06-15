@@ -1,25 +1,17 @@
-import { Link, useLoaderData } from 'react-router'
+import { Link, useParams } from 'react-router';
 import CountdownTimer from '../components/CountdownTimer';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase.config';
+import { Helmet } from 'react-helmet-async';
+import UseAxiosSecure from '../hooks/UseAxiosSecure';
 
 const MarathonDetails = () => {
-    const {
-        _id,
-        photo,
-        title,
-        location,
-        description,
-        distance,
-        startReg,
-        endReg,
-        marathonDate,
-        creatBy,
-        creatorName,
-        createdAt,
-    } = useLoaderData();
+    const { id } = useParams();
+    const axiosSecure = UseAxiosSecure();
 
+    const [marathon, setMarathon] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [registrationCount, setRegistrationCount] = useState(0);
     const [currentUserEmail, setCurrentUserEmail] = useState('');
 
@@ -33,12 +25,48 @@ const MarathonDetails = () => {
         return () => unsubscribe();
     }, []);
 
+    // 🔒 Fetch marathon details securely with JWT
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/applications/marathon/${_id}`)
-            .then(res => res.json())
-            .then(data => setRegistrationCount(data.length))
-            .catch(err => console.error("Failed to fetch registration count:", err));
-    }, [_id]);
+        if (id) {
+            axiosSecure.get(`/marathons/${id}`)
+                .then(res => {
+                    setMarathon(res.data);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error("Failed to fetch marathon:", err);
+                    setLoading(false);
+                });
+        }
+    }, [id, axiosSecure]);
+
+    // 🔒 Fetch total registrations securely
+    useEffect(() => {
+        if (id) {
+            axiosSecure.get(`/applications/marathon/${id}`)
+                .then(res => setRegistrationCount(res.data.length))
+                .catch(err => console.error("Failed to fetch registration count:", err));
+        }
+    }, [id, axiosSecure]);
+
+    if (loading || !marathon) {
+        return <div className="py-20 text-center">Loading...</div>;
+    }
+
+    const {
+        _id,
+        photo,
+        title,
+        location,
+        description,
+        distance,
+        startReg,
+        endReg,
+        marathonDate,
+        creatBy,
+        creatorName,
+        createdAt,
+    } = marathon;
 
     const today = new Date();
     const isRegistrationOpen =
@@ -46,9 +74,9 @@ const MarathonDetails = () => {
 
     return (
         <div className="container w-full px-4 mx-auto my-12 popins sm:px-6 lg:px-8">
-            {/* <Helmet>
+            <Helmet>
                 <title>Marathon Details | RunFlow</title>
-            </Helmet> */}
+            </Helmet>
             <h2 className="mb-2 text-3xl font-bold text-center md:text-4xl lg:text-5xl">Marathon Details</h2>
             <div className="flex flex-col-reverse items-center justify-center my-8 lg:flex-row ">
                 {/* Marathon Image */}
@@ -68,14 +96,14 @@ const MarathonDetails = () => {
             </div>
 
             <div className="flex flex-col items-center justify-between mb-8">
-                <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl">{title}</h1>
+                <h1 className="text-3xl font-bold text-center sm:text-4xl lg:text-5xl">{title}</h1>
                 <p className="mt-4 text-lg font-bold"> {description}</p>
             </div>
 
             <div className="mb-8 space-y-4">
 
                 <p className=""><span className="text-lg font-bold">🏃 Distance:</span> {distance}</p>
-                
+
                 <p className=""><span className="text-lg font-bold">📍 Location:</span> {location}</p>
                 <p className="">
                     <span className="text-lg font-bold">🟢 Registration Start:</span>

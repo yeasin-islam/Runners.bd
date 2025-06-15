@@ -5,6 +5,7 @@ import MarathonCard from "../components/MarathonCard";
 import Button from "../components/shared/Button";
 import LoadingFallback from "../components/shared/LoadingFallback";
 import UseAxiosSecure from "../hooks/UseAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Marathons = () => {
     const { user } = useAuth();
@@ -63,6 +64,11 @@ const Marathons = () => {
 
     return (
         <section className="bg-base-200">
+            <Helmet>
+                <title>
+                    Marathons | RunFlow
+                </title>
+            </Helmet>
             <div className="container px-4 py-12 mx-auto text-center md:px-0">
                 <div className="mb-8">
                     <h2 className="mb-2 text-3xl font-bold md:text-4xl lg:text-5xl">All Marathons</h2>
