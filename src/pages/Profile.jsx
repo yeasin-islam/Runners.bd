@@ -1,11 +1,9 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-// import { AuthCredential, reload } from "firebase/auth";
 import { toast } from "react-hot-toast";
-// import { useNavigate } from "react-router";
-// import { Helmet } from "react-helmet-async";
 import { FaUserCircle } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { motion } from "motion/react";
 
 const Profile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
@@ -33,7 +31,13 @@ const Profile = () => {
         <title>Profile | RunFlow</title>
       </Helmet>
       <div className="w-full max-w-sm">
-        <div className="shadow-2xl card bg-base-100">
+        <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
+            }} className="shadow-2xl card bg-base-100">
           <h1 className="pt-6 text-3xl font-bold text-center lg:text-5xl md:text-4xl">Profile</h1>
 
           <div className="card-body">
@@ -95,7 +99,7 @@ const Profile = () => {
               </form>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -69,80 +69,88 @@ const MarathonDetails = () => {
     } = marathon;
 
     const today = new Date();
-    const isRegistrationOpen =
-        new Date(startReg) <= today && today <= new Date(endReg);
+    const endRegPlusOneDay = new Date(endReg);
+    endRegPlusOneDay.setDate(endRegPlusOneDay.getDate() + 1);
 
+    const isRegistrationOpen =
+        new Date(startReg) <= today && today <= endRegPlusOneDay;
     return (
-        <div className="container w-full px-4 mx-auto my-12 popins sm:px-6 lg:px-8">
+        <section container px-4 mx-auto my-8>
             <Helmet>
                 <title>Marathon Details | RunFlow</title>
             </Helmet>
-            <h2 className="mb-2 text-3xl font-bold text-center md:text-4xl lg:text-5xl">Marathon Details</h2>
-            <div className="flex flex-col-reverse items-center justify-center my-8 lg:flex-row ">
-                {/* Marathon Image */}
-                <img
-                    src={photo}
-                    className="w-full sm:w-3/4 md:w-1/2 lg:w-[50%] mx-auto rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl"
-                    alt={title}
-                />
+            <div className='container mx-auto'>
+                <div className=" px-4 my-8 popins sm:px-6 lg:px-8 bg-base-300 p-10 rounded-md shadow-md mx-4">
+                    <h2 className="pb-2 text-3xl font-bold text-center md:text-4xl lg:text-5xl underline">Marathon Details</h2>
+                    <div className="flex flex-col-reverse items-center justify-center my-8 lg:flex-row ">
+                        {/* Marathon Image */}
+                        <img
+                            src={photo}
+                            className="w-full sm:w-3/4 md:w-1/2 lg:w-[50%] mx-auto rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl"
+                            alt={title}
+                        />
 
-                {/* Countdown Timer */}
-                <div className="w-full sm:w-3/4 md:w-1/2 lg:w-[40%] mx-auto mb-8 lg:mb-0 text-center">
-                    <CountdownTimer marathonStart={marathonDate} />
-                    <p className="mt-4 text-lg font-medium text-gray-600">
-                        Time left until the marathon starts
-                    </p>
+                        {/* Countdown Timer */}
+                        <div className="w-full sm:w-3/4 md:w-1/2 lg:w-[40%] mx-auto mb-8 lg:mb-0 text-center">
+                            <CountdownTimer marathonStart={marathonDate} />
+                            <p className="mt-4 text-lg font-medium text-gray-600">
+                                Time left until the marathon starts
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-between mb-8">
+                        <h1 className="text-3xl font-bold text-center sm:text-4xl lg:text-5xl">{title}</h1>
+                        <p className="mt-4 text-lg font-bold"> {description}</p>
+                    </div>
+
+                    <div className="mb-8 space-y-4 md:pl-10 ">
+
+                        <p className=""><span className="text-lg font-bold">🏃 Distance:</span> {distance}</p>
+
+                        <p className=""><span className="text-lg font-bold">📍 Location:</span> {location}</p>
+                        <p className="">
+                            <span className="text-lg font-bold">🟢 Registration Start:</span>
+                            <span className="font-semibold text-blue-600"> {startReg}</span>
+                        </p>
+
+                        <p className="">
+                            <span className="text-lg font-bold">🔴 Registration End:</span>
+                            <span className="font-semibold text-red-600"> {endReg}</span>
+                        </p>
+
+                        <p className="">
+                            <span className="text-lg font-bold">🏁 Marathon Date:</span>
+                            <span className="font-semibold text-emerald-600"> {marathonDate}</span>
+                        </p>
+                        <p className="">
+                            <span className="text-lg font-bold">🗓️ Created At:</span>
+                            <span className="font-semibold text-gray-600"> {createdAt}</span>
+                        </p>
+                        <p className=""><span className="text-lg font-bold">👤 Created By:</span> <span className='font-bold text-md'>{creatorName}</span> ({creatBy})</p>
+                        <p className=""><span className="text-lg font-bold">🧑‍🤝‍🧑 Total Registration:</span> {registrationCount}</p>
+                    </div>
+
+                    <div className="justify-end card-actions">
+                        {!isRegistrationOpen ? (
+                            <button className="btn btn-disabled" disabled>
+                                Registration Closed
+                            </button>
+                        ) : creatBy === currentUserEmail ? (
+                            <button className="btn btn-disabled" disabled>
+                                You Created This Marathon
+                            </button>
+                        ) : (
+                            <Link to={`/marathon-registration/${_id}`}>
+                                <button className="btn btn-primary">Register Now</button>
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div className="flex flex-col items-center justify-between mb-8">
-                <h1 className="text-3xl font-bold text-center sm:text-4xl lg:text-5xl">{title}</h1>
-                <p className="mt-4 text-lg font-bold"> {description}</p>
-            </div>
 
-            <div className="mb-8 space-y-4">
-
-                <p className=""><span className="text-lg font-bold">🏃 Distance:</span> {distance}</p>
-
-                <p className=""><span className="text-lg font-bold">📍 Location:</span> {location}</p>
-                <p className="">
-                    <span className="text-lg font-bold">🟢 Registration Start:</span>
-                    <span className="font-semibold text-blue-600"> {startReg}</span>
-                </p>
-
-                <p className="">
-                    <span className="text-lg font-bold">🔴 Registration End:</span>
-                    <span className="font-semibold text-red-600"> {endReg}</span>
-                </p>
-
-                <p className="">
-                    <span className="text-lg font-bold">🏁 Marathon Date:</span>
-                    <span className="font-semibold text-emerald-600"> {marathonDate}</span>
-                </p>
-                <p className="">
-                    <span className="text-lg font-bold">🗓️ Created At:</span>
-                    <span className="font-semibold text-gray-600"> {createdAt}</span>
-                </p>
-                <p className=""><span className="text-lg font-bold">👤 Created By:</span> <span className='font-bold text-md'>{creatorName}</span> ({creatBy})</p>
-                <p className=""><span className="text-lg font-bold">🧑‍🤝‍🧑 Total Registration:</span> {registrationCount}</p>
-            </div>
-
-            <div className="justify-end card-actions">
-                {!isRegistrationOpen ? (
-                    <button className="btn btn-disabled" disabled>
-                        Registration Closed
-                    </button>
-                ) : creatBy === currentUserEmail ? (
-                    <button className="btn btn-disabled" disabled>
-                        You Created This Marathon
-                    </button>
-                ) : (
-                    <Link to={`/marathon-registration/${_id}`}>
-                        <button className="btn btn-primary">Register Now</button>
-                    </Link>
-                )}
-            </div>
-        </div>
     )
 }
 

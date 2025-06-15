@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Tooltip } from 'react-tooltip';
 
+import { motion } from "motion/react";
+
 const MarathonsSectionCard = ({ marathonPost }) => {
     const PLACES = ['top-end']
     const { _id,
@@ -15,7 +17,13 @@ const MarathonsSectionCard = ({ marathonPost }) => {
         createdAt,
         marathonDate, } = marathonPost;
     return (
-        <div className="mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 hover:scale-105 hover:shadow-xl">
+        <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.4,
+              scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
+            }} className="mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 hover:scale-105 hover:shadow-xl">
             <figure>
                 <img
                     src={photo}
@@ -41,7 +49,7 @@ const MarathonsSectionCard = ({ marathonPost }) => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 };
 

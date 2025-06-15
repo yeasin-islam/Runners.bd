@@ -80,7 +80,7 @@ const AddMarathon = () => {
                     Add Marathon | RunFlow
                 </title>
             </Helmet>
-            <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300">
+            <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300 ">
                 <div className='w-full max-w-2xl px-4 mt-6 text-center'>
                     <h2 className="my-4 text-3xl font-bold md:text-4xl">Add Your Marathon</h2>
                     <p className="mb-6 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, eum.</p>

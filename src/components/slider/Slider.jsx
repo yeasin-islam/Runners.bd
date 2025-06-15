@@ -23,7 +23,7 @@ export default function App() {
                                 Our platform brings together all marathon events across the country. Get detailed info, browse locations, dates, organizers, and everything you need before joining the race.
                             </p>
                             <Link to="/marathons">
-                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Get Start</button>
+                                <button className="btn text-2xl font-bold px-4 py-6 btn-primary">Get Start</button>
                             </Link>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ export default function App() {
                                 Are you an organizer? Easily list your marathon event through our dashboard. Set the title, date, location, and watch participants roll in.
                             </p>
                             <Link to="/dashboard/add-marathon">
-                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Add Now</button>
+                                <button className="btn text-2xl font-bold px-4 py-6 btn-primary">Add Now</button>
                             </Link>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ export default function App() {
                                 Found your perfect run? Apply with just one click. Track your application, get updates, and prepare for race day stress-free.
                             </p>
                             <Link to="/marathons">
-                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Apply Now</button>
+                                <button className="btn text-2xl font-bold px-4 py-6 btn-primary">Apply Now</button>
                             </Link>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ export default function App() {
                                 Your personal space to manage everything — add events, track applications, and monitor performance. Smooth, simple, and secure.
                             </p>
                             <Link to="/dashboard/my-marathons">
-                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Visit Dashboard</button>
+                                <button className="btn text-2xl font-bold px-4 py-6 btn-primary">Visit Dashboard</button>
                             </Link>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ export default function App() {
                                 From setting records to making memories, marathons are more than races. Join challenges, unlock badges, and enjoy the runner’s life your way.
                             </p>
                             <Link>
-                                <button className="btn text-2xl font-bold px-8 py-6 btn-primary">Explore More <ChevronsDown></ChevronsDown></button>
+                                <button className="btn text-2xl font-bold px-4 py-6 btn-primary">Explore More <ChevronsDown></ChevronsDown></button>
                             </Link>
                         </div>
                     </div>

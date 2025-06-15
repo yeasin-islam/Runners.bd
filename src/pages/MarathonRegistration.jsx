@@ -16,20 +16,20 @@ const MarathonRegistration = () => {
     const navigate = useNavigate();
     const axiosSecure = UseAxiosSecure();
 
-    
-useEffect(() => {
-    if (marathonId) {
-        axiosSecure.get(`/marathons/${marathonId}`)
-            .then(res => {
-                setMarathon(res.data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error("Failed to fetch marathon details:", err);
-                setLoading(false);
-            });
-    }
-}, [marathonId, axiosSecure]);
+
+    useEffect(() => {
+        if (marathonId) {
+            axiosSecure.get(`/marathons/${marathonId}`)
+                .then(res => {
+                    setMarathon(res.data);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error("Failed to fetch marathon details:", err);
+                    setLoading(false);
+                });
+        }
+    }, [marathonId, axiosSecure]);
 
     const handleApplyForm = e => {
         e.preventDefault();
@@ -77,9 +77,12 @@ useEffect(() => {
                 </title>
             </Helmet>
             <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300">
-                <p className="m-8 text-3xl font-bold text-center md:text-4xl">
-                    Registration for: {marathon.title} <br />
-                    <Link to={`/marathon-details/${marathonId}`} className="text-lg text-red-500 underline">View Details</Link>
+                <p className="m-8  text-center ">
+                    <h3 className='mb-2 text-3xl font-bold md:text-4xl lg:text-5xl underline'>Registration for:</h3>
+                    <p className='text-primary pt-2 text-3xl font-bold md:text-4xl '>{marathon.title}</p>
+                    <p className=''>
+                        <Link to={`/marathon-details/${marathonId}`} className="text-lg text-red-500 underline">View Details</Link>
+                    </p>
                 </p>
 
                 <form onSubmit={handleApplyForm} className="grid w-full max-w-5xl grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-10">
