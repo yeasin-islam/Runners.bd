@@ -82,7 +82,7 @@ const MarathonDetails = () => {
                 <title>Marathon Details | RunFlow</title>
             </Helmet>
             <div className='container mx-auto'>
-                <div className=" px-4 my-8 popins sm:px-6 lg:px-8 bg-base-300 p-10 rounded-md shadow-md mx-4 border border-primary">
+                <div className=" px-4 my-8 popins sm:px-6 lg:px-8 bg-base-300 p-10 rounded-md shadow-md border border-primary">
                     <h2 className="pb-2 text-3xl font-bold text-center md:text-4xl lg:text-5xl underline">Marathon Details</h2>
                     <div className="flex flex-col-reverse items-center justify-center my-8 lg:flex-row ">
                         {/* Marathon Image */}
