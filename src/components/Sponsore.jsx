@@ -11,7 +11,7 @@ const Sponsors = () => {
 
   return (
     <section className=" bg-base-100">
-      <div className='container mx-auto py-12 mb-4'>
+      <div className='fontJakarta container mx-auto py-12 mb-4'>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">Our Sponsors</h2>
         <p className="max-w-2xl mx-auto mb-8 text-center">We’re proudly supported by amazing sponsors who help us make every marathon unforgettable. Thanks to their contributions, we go the extra mile!</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">

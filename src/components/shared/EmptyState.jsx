@@ -4,7 +4,7 @@ import Button from './Button'
 
 const EmptyState = () => {
   return (
-    <div className='popins py-24 text-center '>
+    <div className='fontJakarta py-24 text-center '>
       <h1 className='mb-4 text-4xl md:text-6xl lg:text-7xl font-bold text-orange-500'>
         No Events Found
       </h1>

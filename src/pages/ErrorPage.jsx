@@ -10,7 +10,7 @@ const ErrorPage = () => {
 
   return (
     <>
-      <div className='popins text-center bg-base-200</>'>
+      <div className='fontJakarta text-center bg-base-200</>'>
         <Helmet>
           <title>
             Error | RunFlow

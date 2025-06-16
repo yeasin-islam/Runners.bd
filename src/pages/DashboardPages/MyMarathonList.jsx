@@ -105,7 +105,7 @@ const MyMarathonList = () => {
     }
 
     return (
-        <>
+        <section className='fontJakarta'>
             <Helmet>
                 <title>
                     My Marathon List | RunFlow
@@ -268,7 +268,7 @@ const MyMarathonList = () => {
                     </div>
                 )}
             </div>
-        </>
+        </section>
 
     );
 };

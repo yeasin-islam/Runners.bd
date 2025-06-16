@@ -66,7 +66,7 @@ const Login = () => {
   };
 
   return (
-    <section className="bg-base-200">
+    <section className="fontJakarta bg-base-200">
       <Helmet>
         <title>
           Login | RunFlow

@@ -14,7 +14,7 @@ const CountdownTimer = ({ marathonStart }) => {
   );
 
   return (
-    <div className="flex justify-center gap-4">
+    <div className="fontJakarta flex justify-center gap-4">
       <CountdownCircleTimer
         isPlaying
         duration={duration}

@@ -71,7 +71,7 @@ const MarathonRegistration = () => {
     }
 
     return (
-        <section className='container px-4 mx-auto my-8'>
+        <section className='fontJakarta container px-4 mx-auto my-8'>
             <Helmet>
                 <title>
                     Apply Marathon | RunFlow

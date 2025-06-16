@@ -10,7 +10,7 @@ import { ChevronsDown } from '../shared/ChevronsDown';
 export default function App() {
     return (
         <>
-            <Swiper navigation={true} modules={[Navigation]} className="poppins mySwiper rounded-lg">
+            <Swiper navigation={true} modules={[Navigation]} className="fontJakarta mySwiper rounded-lg">
                 {/* 1st - Explore */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image2.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>

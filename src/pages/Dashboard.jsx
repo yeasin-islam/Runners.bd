@@ -4,7 +4,7 @@ import { Outlet, NavLink } from 'react-router';
 const Dashboard = () => {
 
   return (
-    <div className="drawer lg:drawer-open drawer-open-top">
+    <div className="fontJakarta drawer lg:drawer-open drawer-open-top">
       <Helmet>
         <title>
           Dashboard | RunFlow

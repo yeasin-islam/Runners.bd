@@ -77,7 +77,7 @@ const MarathonDetails = () => {
     const isRegistrationOpen =
         new Date(startReg) <= today && today <= endRegPlusOneDay;
     return (
-        <section container px-4 mx-auto my-8>
+        <section className='fontJakarta container px-4 mx-auto my-8'>
             <Helmet>
                 <title>Marathon Details | RunFlow</title>
             </Helmet>

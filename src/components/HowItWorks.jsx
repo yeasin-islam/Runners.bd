@@ -36,7 +36,7 @@ const HowItWorks = () => {
 
     return (
         <section className="bg-base-100">
-            <div className='py-12 container mx-auto'>
+            <div className='fontJakarta py-12 container mx-auto'>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2  ">
                     How It Works
                 </h2>

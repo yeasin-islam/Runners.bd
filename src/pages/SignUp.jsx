@@ -100,7 +100,7 @@ const SignUp = () => {
   };
 
   return (
-    <section className="bg-base-200">
+    <section className="fontJakarta bg-base-200">
       <Helmet>
         <title>SignUp | RunFlow</title>
       </Helmet>

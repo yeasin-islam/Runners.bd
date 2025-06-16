@@ -53,7 +53,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="popins bg-base-300">
+        <div className="fontJakarta  bg-base-300">
             <div className="container flex justify-between py-2 mx-auto navbar">
                 <div className="gap-2 navbar-start">
                     <div className="bg-base-300 dropdown lg:hidden">

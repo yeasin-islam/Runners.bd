@@ -11,7 +11,7 @@ const UpcomingMarathons = () => {
 
     return (
         <section className="bg-base-100 ">
-            <div className='container mx-auto py-12'>
+            <div className='fontJakarta container mx-auto py-12'>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">Upcoming Marathons</h2>
                 <p className="max-w-2xl mx-auto mb-8 text-center">Upcoming marathons across Bangladesh - dates, locations, and distances, all in one place.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -30,7 +30,7 @@ const UpcomingMarathons = () => {
                                 <p className="text-gray-500 text-center">{marathon.description}</p>
                                 <p className='font-medium'>🏃 Distance: {marathon.distance}</p>
                                 <p className='font-medium'>📍 Location: {marathon.location}</p>
-                                <h4>📅 Marathon Date: <span className='text-[#09982F] font-semibold'>{new Date(marathon.date).toLocaleDateString()}</span></h4>
+                                <h4>🏁 Marathon Date: <span className='text-[#09982F] font-semibold'>{new Date(marathon.date).toLocaleDateString()}</span></h4>
                             </div>
                         </div>
                     ))}

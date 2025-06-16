@@ -26,7 +26,7 @@ const Profile = () => {
   };
 
   return (
-    <section className="flex items-center justify-center p-10 shadow-2xl popins bg-base-200 rounded-xl">
+    <section className="fontJakarta flex items-center justify-center p-10 shadow-2xl popins bg-base-200 rounded-xl">
       <Helmet>
         <title>Profile | RunFlow</title>
       </Helmet>

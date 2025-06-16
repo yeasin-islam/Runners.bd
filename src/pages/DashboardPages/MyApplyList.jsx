@@ -109,7 +109,7 @@ const MyApplyList = () => {
     );
 
     return (
-        <>
+        <section className='fontJakarta'>
             <Helmet>
                 <title>
                     My Apply List | RunFlow
@@ -258,7 +258,7 @@ const MyApplyList = () => {
                     </div>
                 )}
             </div>
-        </>
+        </section>
 
     );
 };

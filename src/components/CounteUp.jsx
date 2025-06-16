@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 const CounteUp = () => {
   return (
     <section className="bg-base-100">
-      <div className="container mx-auto fontStyle text-center py-12">
+      <div className="fontJakarta container mx-auto fontJakarta text-center py-12">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">Empowering Every Stride</h1>
         <p className="max-w-2xl mx-auto mb-8 text-center">
           From registrations to finish lines - we’re tracking progress across the country’s most exciting marathon events.

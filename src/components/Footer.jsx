@@ -10,7 +10,7 @@ const Footer = () => {
 
     return (
         <section className="bg-base-300 popins">
-            <div className="container mx-auto">
+            <div className="fontJakarta container mx-auto">
                 <footer className="justify-between gap-10 py-10 space-y-8 lg:flex ">
                     {/* Logo & Description */}
                     <div className="flex flex-col items-center sm:items-start">

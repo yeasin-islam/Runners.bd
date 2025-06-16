@@ -8,7 +8,7 @@ const MarathonsSection = ({marathonPosts}) => {
     }, [ marathonPosts])
     return (
         <section className=''>
-            <div className='popins py-12 px-4 md:px-0 text-center container mx-auto'>
+            <div className='fontJakarta popins py-12 px-4 md:px-0 text-center container mx-auto'>
                 {/* Section Tag & Description */}
                 <div className="mb-12 mt-4">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  mb-2">

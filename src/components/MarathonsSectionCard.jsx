@@ -23,7 +23,7 @@ const MarathonsSectionCard = ({ marathonPost }) => {
             transition={{
                 duration: 0.4,
                 scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
-            }} className="mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 border border-primary hover:scale-105 hover:shadow-xl">
+            }} className="fontJakarta mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 border border-primary hover:scale-105 hover:shadow-xl">
             <figure>
                 <img
                     src={photo}
