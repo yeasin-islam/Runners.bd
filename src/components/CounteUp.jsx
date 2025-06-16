@@ -12,8 +12,8 @@ const CounteUp = () => {
 
         {/* Counter Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 card mx-4 lg:mx-0 ">
-          <div className="card border-none bg-base-300 rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <div className="w-20">
+          <div className="card rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl border border-secondery">
+            <div className="w-20 overflow-hidden rounded-full ring ring-secondery ring-offset-base-100 ring-offset-2">
               <img src="/assets/marathons.png" alt="Total Marathons" className="w-20 h-20 rounded-full ring-offset-base-100 ring-offset-2 overflow-hidden"/>
             </div>
             <div className="space-y-2">
@@ -25,8 +25,8 @@ const CounteUp = () => {
             </div>
           </div>
 
-          <div className="card border-none bg-base-300 rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <div className="w-20">
+          <div className="card rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl border border-secondery">
+            <div className="w-20 overflow-hidden rounded-full ring ring-secondery ring-offset-base-100 ring-offset-2">
               <img src="/assets/participants.png" alt="Participants" className="w-20 h-20 rounded-full ring-offset-base-100 ring-offset-2 overflow-hidden"/>
             </div>
             <div className="space-y-2">
@@ -38,8 +38,8 @@ const CounteUp = () => {
             </div>
           </div>
 
-          <div className="card border-none bg-base-300 rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <div className="w-20">
+          <div className="card rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl border border-secondery">
+            <div className="w-20 overflow-hidden rounded-full ring ring-secondery ring-offset-base-100 ring-offset-2">
               <img src="/assets/registrations.png" alt="Registrations" className="w-20 h-20 rounded-full ring-offset-base-100 ring-offset-2 overflow-hidden"/>
             </div>
             <div className="space-y-2">
@@ -51,8 +51,8 @@ const CounteUp = () => {
             </div>
           </div>
 
-          <div className="card border-none bg-base-300 rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-            <div className="w-20">
+          <div className="card rounded-md p-8 text-left space-y-6 shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl border border-secondery">
+            <div className="w-20 overflow-hidden rounded-full ring ring-secondery ring-offset-base-100 ring-offset-2">
               <img src="/assets/cities.png" alt="Cities" className="w-20 h-20 rounded-full ring-offset-base-100 ring-offset-2 overflow-hidden"/>
             </div>
             <div className="space-y-2">

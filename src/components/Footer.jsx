@@ -15,7 +15,7 @@ const Footer = () => {
                     {/* Logo & Description */}
                     <div className="flex flex-col items-center sm:items-start">
                         <NavLink to="/" className="flex items-center">
-                            <p className="font-festive text-4xl flex items-center font-bold text-[#ff1850] ">RunFlow</p>
+                            <p className="font-festive text-4xl flex items-center font-bold text-primary ">RunFlow</p>
                             <img className="w-16 -ml-4 h-11" src="/assets/WebLogo.png" alt="RunFlow" />
                         </NavLink>
                         <p className="max-w-xs mt-4 text-center sm:text-left">

@@ -21,14 +21,14 @@ const MarathonsSectionCard = ({ marathonPost }) => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
-              duration: 0.4,
-              scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
-            }} className="mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 hover:scale-105 hover:shadow-xl">
+                duration: 0.4,
+                scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
+            }} className="mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 border border-primary hover:scale-105 hover:shadow-xl">
             <figure>
                 <img
                     src={photo}
                     alt={title}
-                    className="object-cover w-full h-48"
+                    className="object-cover w-full h-48 border-b border-primary"
                 />
             </figure>
             <div className="text-left card-body">
@@ -45,7 +45,13 @@ const MarathonsSectionCard = ({ marathonPost }) => {
                 <p>🕒 Created: <span className="text-gray-600"> {createdAt}</span></p>
                 <div className="justify-end mt-4 card-actions">
                     <Link to={`/marathon-details/${_id}`}>
-                        <button className="btn btn-primary">Details</button>
+                        <button id="clickable" className="btn btn-primary">Details</button>
+                        {PLACES.map(place => (
+                            <Tooltip key={place} anchorSelect="#clickable" place={place} clickable delayShow={500}
+                                        delayHide={300} >
+                                <button>Click me to see details!</button>
+                            </Tooltip>
+                        ))}
                     </Link>
                 </div>
             </div>

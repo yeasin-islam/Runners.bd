@@ -16,12 +16,12 @@ const UpcomingMarathons = () => {
                 <p className="max-w-2xl mx-auto mb-8 text-center">Upcoming marathons across Bangladesh - dates, locations, and distances, all in one place.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {marathons.map(marathon => (
-                        <div key={marathon.id} className="card mx-4 md:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                        <div key={marathon.id} className="card mx-4 md:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl border border-primary">
                             <figure>
                                 <img
                                     src={marathon.image}
                                     alt={marathon.title}
-                                    className="h-48 w-full object-cover"
+                                    className="h-48 w-full object-cover border-b border-primary"
                                 />
                             </figure>
                             <div className="card-body">

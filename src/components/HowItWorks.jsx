@@ -15,7 +15,7 @@ const HowItWorks = () => {
             id: 2,
             title: 'Add Your Marathon',
             description:
-                'Join your selected marathon, enjoy the community, and achieve your personal best on race day.',
+               'Add your marathon effortlessly with all the details — distance, location, date, and more. Share it with thousands of runners today!',
             icon: <FaPlus className="text-4xl text-primary" />,
         },
         {
@@ -46,7 +46,7 @@ const HowItWorks = () => {
                     {steps.map(step => (
                         <div
                             key={step.id}
-                            className="text-center p-6 border border-base-200 bg-base-300 rounded-xl shadow-md transition transform duration-300 hover:scale-105 hover:shadow-xl"
+                            className="text-center p-6 bg-base-300 rounded-xl shadow-md transition transform duration-300 hover:scale-105 hover:shadow-xl border border-secondery"
                         >
                             <div className="mb-4 flex justify-center">{step.icon}</div>
                             <h3 className="text-xl font-semibold mb-3">{step.title}</h3>

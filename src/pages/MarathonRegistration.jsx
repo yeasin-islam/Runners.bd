@@ -44,6 +44,7 @@ const MarathonRegistration = () => {
             applicantLastName: form.lastName.value,
             applicantContactNumber: form.contactnumber.value,
             applicantLocation: form.yourLocation.value,
+            applicantResponse: form.response.value,
         };
 
         axios.post(`${import.meta.env.VITE_API_URL}/registrations`, registration)
@@ -121,6 +122,10 @@ const MarathonRegistration = () => {
                             readOnly
                             className="w-full input input-bordered"
                         />
+                    </div>
+                    <div className="md:col-span-2">
+                        <legend className="mb-1 fieldset-legend">We would like to hear if you want to mention anything else.</legend>
+                        <textarea name="response" className="w-full h-24 textarea" placeholder="Type here..."></textarea>
                     </div>
 
                     <button type="submit" className="mt-4 btn btn-neutral md:col-span-2">Submit</button>

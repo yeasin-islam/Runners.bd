@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { Tooltip } from 'react-tooltip';
 
 const MarathonCard = ({ marathon }) => {
+  const PLACES = ['top-end']
   const {
     _id,
     photo,
@@ -16,12 +18,12 @@ const MarathonCard = ({ marathon }) => {
   } = marathon || {}
 
   return (
-    <div className="card mx-4 lg:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl">
+    <div className="card mx-4 lg:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl border border-primary">
       <figure>
         <img
           src={photo}
           alt={title}
-          className="h-48 w-full object-cover"
+          className="h-48 w-full object-cover border-b border-primary"
         />
       </figure>
       <div className="card-body text-left">
@@ -38,7 +40,13 @@ const MarathonCard = ({ marathon }) => {
         <p>🕒 Created: <span className="text-gray-600"> {createdAt}</span></p>
         <div className="card-actions justify-end mt-4">
           <Link to={`/marathon-details/${_id}`}>
-            <button className="btn btn-primary">Details</button>
+            <button id="clickable" className="btn btn-primary">Details</button>
+            {PLACES.map(place => (
+              <Tooltip key={place} anchorSelect="#clickable" place={place} clickable delayShow={500}
+                delayHide={300} >
+                <button>Click me to see details!</button>
+              </Tooltip>
+            ))}
           </Link>
         </div>
       </div>

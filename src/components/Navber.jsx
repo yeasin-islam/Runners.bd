@@ -111,7 +111,7 @@ const Navbar = () => {
 
                     <NavLink to="/">
                         <div className="flex items-center justify-start">
-                            <p className="font-festive text-4xl lg:flex hidden  items-center font-bold text-[#ff1850] ">RunFlow</p>
+                            <p className="font-festive text-4xl lg:flex hidden  items-center font-bold text-primary ">RunFlow</p>
                             <img className="w-16 h-11 lg:-ml-4" src="/assets/WebLogo.png" alt="RunFlow" />
                         </div>
                     </NavLink>

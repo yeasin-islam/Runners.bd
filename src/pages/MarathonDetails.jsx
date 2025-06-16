@@ -5,10 +5,12 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase.config';
 import { Helmet } from 'react-helmet-async';
 import UseAxiosSecure from '../hooks/UseAxiosSecure';
+import { Tooltip } from 'react-tooltip';
 
 const MarathonDetails = () => {
     const { id } = useParams();
     const axiosSecure = UseAxiosSecure();
+    const PLACES = ['top-end']
 
     const [marathon, setMarathon] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -80,7 +82,7 @@ const MarathonDetails = () => {
                 <title>Marathon Details | RunFlow</title>
             </Helmet>
             <div className='container mx-auto'>
-                <div className=" px-4 my-8 popins sm:px-6 lg:px-8 bg-base-300 p-10 rounded-md shadow-md mx-4">
+                <div className=" px-4 my-8 popins sm:px-6 lg:px-8 bg-base-300 p-10 rounded-md shadow-md mx-4 border border-primary">
                     <h2 className="pb-2 text-3xl font-bold text-center md:text-4xl lg:text-5xl underline">Marathon Details</h2>
                     <div className="flex flex-col-reverse items-center justify-center my-8 lg:flex-row ">
                         {/* Marathon Image */}
@@ -142,7 +144,13 @@ const MarathonDetails = () => {
                             </button>
                         ) : (
                             <Link to={`/marathon-registration/${_id}`}>
-                                <button className="btn btn-primary">Register Now</button>
+                                <button id="clickable" className="btn btn-primary">Register Now</button>
+                                {PLACES.map(place => (
+                                    <Tooltip key={place} anchorSelect="#clickable" place={place} clickable delayShow={500}
+                                        delayHide={300} >
+                                        <button>Click me to go to registration page</button>
+                                    </Tooltip>
+                                ))}
                             </Link>
                         )}
                     </div>

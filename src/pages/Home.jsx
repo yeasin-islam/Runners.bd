@@ -8,6 +8,7 @@ import UpcomingMarathons from '../components/UpcomingMarathons';
 import MarathonsSection from '../components/MarathonsSection';
 import { useLoaderData } from 'react-router';
 import { Helmet } from 'react-helmet-async';
+import AddReview from '../components/AddReview';
 
 const Home = () => {
 
@@ -29,6 +30,7 @@ const Home = () => {
                 <WhatPeopleSay></WhatPeopleSay>
                 <CounteUp></CounteUp>
                 <Sponsore></Sponsore>
+                <AddReview></AddReview>
             </div>
         </>
 
