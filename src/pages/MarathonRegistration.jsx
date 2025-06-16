@@ -77,8 +77,8 @@ const MarathonRegistration = () => {
                     Apply Marathon | RunFlow
                 </title>
             </Helmet>
-            <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300">
-                <p className="m-8  text-center ">
+            <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300 border border-primary">
+                <p className="m-12 text-center ">
                     <h3 className='mb-2 text-3xl font-bold md:text-4xl lg:text-5xl underline'>Registration for:</h3>
                     <p className='text-primary pt-2 text-3xl font-bold md:text-4xl '>{marathon.title}</p>
                     <p className=''>

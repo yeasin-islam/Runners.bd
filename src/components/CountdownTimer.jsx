@@ -21,7 +21,7 @@ const CountdownTimer = ({ marathonStart }) => {
         initialRemainingTime={duration}
         colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
         colorsTime={[duration, duration * 0.6, duration * 0.3, 0]}
-        size={120}
+        size={110}
         trailColor="#eee"
       >
         {({ remainingTime }) => {
@@ -35,7 +35,7 @@ const CountdownTimer = ({ marathonStart }) => {
         duration={86400}
         initialRemainingTime={duration % (60 * 60 * 24)}
         colors={["#004777"]}
-        size={120}
+        size={110}
         trailColor="#eee"
       >
         {({ remainingTime }) => {
@@ -49,7 +49,7 @@ const CountdownTimer = ({ marathonStart }) => {
         duration={3600}
         initialRemainingTime={duration % 3600}
         colors={["#F7B801"]}
-        size={120}
+        size={110}
         trailColor="#eee"
       >
         {({ remainingTime }) => {

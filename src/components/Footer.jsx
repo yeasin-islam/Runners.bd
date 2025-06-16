@@ -94,11 +94,11 @@ const Footer = () => {
                     </div>
                 </footer>
                 <hr className="container mx-auto" />
-                <div className="items-center py-4 space-y-2 text-center lg:justify-between lg:flex">
+                <div className="py-4 text-center flex flex-col-reverse items-center space-y-2 space-y-reverse lg:flex-row lg:justify-between lg:space-y-0">
                     <p className=" text-md">
                         © {new Date().getFullYear()} – All rights reserved by RunFlow.com
                     </p>
-                    <ul className="flex justify-center gap-2 sm:text-left">
+                    <ul className="flex justify-center gap-2">
                         <li><a className="link link-hover">Terms of Use</a></li>
                         <li><a className="link link-hover">Privacy Policy</a></li>
                         <li><a className="link link-hover">Cookie Policy</a></li>
