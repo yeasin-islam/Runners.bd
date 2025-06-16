@@ -95,7 +95,7 @@ const MyMarathonList = () => {
                 }
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
                 toast.error('Update failed.');
             })
     };

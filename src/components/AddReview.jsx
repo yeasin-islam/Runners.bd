@@ -44,7 +44,7 @@ const AddReview = () => {
 
         const email = user.email;
         const newReview = { name, location, photo, message, rating, email };
-        console.log("Review Submitted:", newReview);
+        // console.log("Review Submitted:", newReview);
 
         axios.post(`${import.meta.env.VITE_API_URL}/reviews`, newReview)
             .then(res => {
@@ -60,7 +60,7 @@ const AddReview = () => {
                 }
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
             })
 
         // Reset form
