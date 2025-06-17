@@ -12,7 +12,9 @@ const UpcomingMarathons = () => {
     return (
         <section className="bg-base-100 ">
             <div className='fontJakarta container mx-auto py-12'>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">Upcoming Marathons</h2>
+                <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-primary">
+                    Upcoming <span className="text-success">Marathons</span>
+                </h2>
                 <p className="max-w-2xl mx-auto mb-8 text-center">Upcoming marathons across Bangladesh - dates, locations, and distances, all in one place.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {marathons.map(marathon => (

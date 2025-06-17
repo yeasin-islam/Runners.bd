@@ -112,7 +112,7 @@ const MyApplyList = () => {
         <section className='fontJakarta'>
             <Helmet>
                 <title>
-                    My Apply List | RunFlow
+                    My Apply List | Runners.bd
                 </title>
             </Helmet>
             <div className="container px-4 py-10 mx-auto">

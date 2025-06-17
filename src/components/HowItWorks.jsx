@@ -37,8 +37,7 @@ const HowItWorks = () => {
     return (
         <section className="bg-base-100">
             <div className='fontJakarta py-12 container mx-auto'>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2  ">
-                    How It Works
+                <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">How It <span className="text-success">Works</span>
                 </h2>
                 <p className="max-w-2xl mx-auto mb-8 text-center">Easily discover, explore, and register for marathons in just a few clicks - your running journey starts here!</p>
 

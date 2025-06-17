@@ -66,12 +66,12 @@ const Marathons = () => {
         <section className="fontJakarta bg-base-200">
             <Helmet>
                 <title>
-                    Marathons | RunFlow
+                    Marathons | Runners.bd
                 </title>
             </Helmet>
             <div className="container px-4 py-12 mx-auto text-center md:px-0">
                 <div className="mb-8">
-                    <h2 className="mb-2 text-3xl font-bold md:text-4xl lg:text-5xl">All Marathons</h2>
+                    <h2 className="mb-2 text-3xl font-bold md:text-4xl lg:text-5xl">All <span className="text-primary">Marathons</span></h2>
                     <p className="max-w-2xl mx-auto mb-8">Browse marathons by date - newest or oldest first.</p>
 
                     <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-end">

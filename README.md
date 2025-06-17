@@ -1,14 +1,14 @@
-# RunFlow 🏃
+# Runners.bd 🏃
 ## Your Ultimate Marathon Management Platform
 
-Welcome to **RunFlow**, the go-to platform for organizing, exploring, and joining marathon events with ease and excitement.
+Welcome to **Runners.bd**, the go-to platform for organizing, exploring, and joining marathon events with ease and excitement.
 
 ---
 
 ## 🌍 Live Website
 
-🔗 [Visit RunFlow-Firebase](https://marathon-management-syst-f546e.web.app)
-🔗 [Visit RunFlow-Netlify](https://marathon-managment-system-catagori06.netlify.app)
+🔗 [Visit Runners.bd-Firebase](https://marathon-management-syst-f546e.web.app)
+🔗 [Visit Runners.bd-Netlify](https://marathon-managment-system-catagori06.netlify.app)
 
 ---
 
@@ -45,53 +45,72 @@ Welcome to **RunFlow**, the go-to platform for organizing, exploring, and joinin
 
 ---
 
-Happy running with **RunFlow**! 🏁
+Happy running with **Runners.bd**! 🏁
 
 ---
+
 ## 📸 Website Preview
 
-Here’s a quick look at **RunFlow** in action:
+Here’s a quick look at **Runners.bd** in action:
+
+---
+
+### 🔐 Sign Up
+![Sign Up](./public/screenshots/SignUp.png)  
+**Create your account and join thousands of runners!**
+
+---
+
+### 🔑 Log In
+![Log In](./public/screenshots/LogIn.png)  
+**Access your dashboard and start your marathon journey.**
 
 ---
 
 ### 🏠 Home Page
-![RunFlow Homepage](./public/screenshots/HomePage01.png)  
+![Home Page](./public/screenshots/HomePage01.png)  
 **Explore top marathons, upcoming events, and smooth navigation.**
 
 ---
 
 ### 🗂️ All Marathons
-![All Marathon](./public/screenshots/AllMarathon.png)  
+![All Marathons](./public/screenshots/AllMarathon.png)  
 **Browse all active and upcoming marathon listings.**
 
 ---
 
 ### 📄 Marathon Details
-![Marathon Details Page](./public/screenshots/MarathonDetails.png)  
-**Detailed view with race info and easy registration options.**
+![Marathon Details](./public/screenshots/MarathonDetails.png)  
+**Get full race info, registration details, and more.**
 
 ---
 
 ### 📝 Register for Marathon
 ![Registration Page](./public/screenshots/RegistrationPage.png)  
-**Runners can register for any marathon from this page.**
+**Easily sign up for your favorite marathons.**
 
 ---
 
 ### 📋 Dashboard – Your Marathons
-![Dashboard Page](./public/screenshots/YourMarathon.png)  
-**Organizers can manage their listed marathons here.**
+![Your Marathons](./public/screenshots/YourMarathon.png)  
+**Organizers can manage and edit their listed marathons.**
 
 ---
 
 ### ➕ Dashboard – Add Marathon
-![Add Marathon Page](./public/screenshots/AddMarathon.png)  
-**Post new marathons with full details using this form.**
+![Add Marathon](./public/screenshots/AddMarathon.png)  
+**Post new marathon events with detailed info.**
 
 ---
 
-### ✅ Dashboard – Your Registered Marathons
-![Your Applyed Marathons](./public/screenshots/YourApplicationMArathon.png)  
-**View all the marathons you've applied for.**
+### ✅ Dashboard – Registered Marathons
+![Registered Marathons](./public/screenshots/YourApplicationMArathon.png)  
+**Track all the marathons you've registered for.**
+
+---
+
+### 👤 Profile
+![Profile](./public/screenshots/Profile.png)  
+**Manage your profile**
 
 ---

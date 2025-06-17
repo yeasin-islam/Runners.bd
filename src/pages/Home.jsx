@@ -19,7 +19,7 @@ const Home = () => {
         <>
             <Helmet>
                 <title>
-                    Home | RunFlow
+                    Home | Runners.bd
                 </title>
             </Helmet>
             <div>

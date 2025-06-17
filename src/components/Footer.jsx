@@ -15,8 +15,8 @@ const Footer = () => {
                     {/* Logo & Description */}
                     <div className="flex flex-col items-center sm:items-start">
                         <NavLink to="/" className="flex items-center">
-                            <p className="font-festive text-4xl flex items-center font-bold text-primary ">RunFlow</p>
-                            <img className="w-16 -ml-4 h-11" src="/assets/WebLogo.png" alt="RunFlow" />
+                            <p className="webNameFont text-4xl font-[1000] text-primary">Runners.bd</p>
+                            <img className="w-16 -ml-2 h-11" src="/assets/WebLogo.png" alt="Runners.bd" />
                         </NavLink>
                         <p className="max-w-xs mt-4 text-center sm:text-left">
                             Discover, apply, and manage marathons across the country - all from one simple, powerful platform built for runners like you.
@@ -86,19 +86,19 @@ const Footer = () => {
                     <div className="flex flex-col items-center text-center sm:items-start">
                         <h6 className="font-bold footer-title">Follow Us</h6>
                         <div className="flex justify-center gap-4 mt-2 text-2xl sm:justify-start">
-                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
-                            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-                            <a href="https://www.x.com/" target="_blank" rel="noopener noreferrer"><FaSquareXTwitter /></a>
-                            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+                            <a href="https://www.facebook.com/yeasin.islam2018" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+                            <a href="https://www.linkedin.com/in/yeasin-islam75" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                            <a href="https://x.com/yeasin_islam75" target="_blank" rel="noopener noreferrer"><FaSquareXTwitter /></a>
+                            <a href="https://www.youtube.com/@ProgrammingHero" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
                         </div>
                     </div>
                 </footer>
                 <hr className="container mx-auto" />
-                <div className="py-4 text-center flex flex-col-reverse items-center space-y-2 space-y-reverse lg:flex-row lg:justify-between lg:space-y-0">
-                    <p className=" text-md">
-                        © {new Date().getFullYear()} – All rights reserved by RunFlow.com
+                <div className="poppins py-4 text-center flex flex-col-reverse items-center space-y-2 space-y-reverse lg:flex-row lg:justify-between lg:space-y-0">
+                    <p className=" text-sm">
+                        © {new Date().getFullYear()} – All rights reserved by Runners.bd.app
                     </p>
-                    <ul className="flex justify-center gap-2">
+                    <ul className="flex justify-center gap-2 text-sm">
                         <li><a className="link link-hover">Terms of Use</a></li>
                         <li><a className="link link-hover">Privacy Policy</a></li>
                         <li><a className="link link-hover">Cookie Policy</a></li>

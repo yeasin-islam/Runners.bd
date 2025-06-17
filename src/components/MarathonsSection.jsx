@@ -11,9 +11,9 @@ const MarathonsSection = ({marathonPosts}) => {
             <div className='fontJakarta popins py-12 px-4 md:px-0 text-center container mx-auto'>
                 {/* Section Tag & Description */}
                 <div className="mb-12 mt-4">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  mb-2">
-                       Top Marathons
-                    </h2>
+                    <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-success">
+                    Top <span className="text-primary">Marathons</span>
+                </h2>
                     <p className="max-w-2xl mx-auto mb-8 text-center">Browse top marathons across Bangladesh with full details on dates, distances, and locations.</p>
 
                 </div>

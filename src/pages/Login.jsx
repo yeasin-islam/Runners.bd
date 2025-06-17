@@ -69,7 +69,7 @@ const Login = () => {
     <section className="fontJakarta bg-base-200">
       <Helmet>
         <title>
-          Login | RunFlow
+          Login | Runners.bd
         </title>
       </Helmet>
       <div className="container mx-auto">
@@ -85,7 +85,7 @@ const Login = () => {
             <Lottie style={{ width: '300px' }} animationData={LottieAnimation} loop={true} />
             <div className="w-full max-w-sm">
               <div className=" border border-primary shadow-2xl card bg-base-100 mx-6 mb-4 lg:mb-0 lg:mx-0">
-                <h1 className="p-5 rounded-t-md text-2xl font-bold text-center bg-primary text-primary-content/100">Login</h1>
+                <h1 className="poppins p-5 rounded-t-md text-2xl font-bold text-center bg-primary text-primary-content/100">Login</h1>
                 <div className="card-body">
                   <form onSubmit={handleSubmit}>
                     <label className="label">Email</label>

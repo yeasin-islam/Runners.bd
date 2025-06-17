@@ -55,8 +55,8 @@ const Navbar = () => {
     return (
         <div className="fontJakarta  bg-base-300">
             <div className="container flex justify-between py-2 mx-auto navbar">
-                <div className="gap-2 navbar-start">
-                    <div className="bg-base-300 dropdown lg:hidden">
+                <div className="navbar-start">
+                    <div className=" bg-base-300 dropdown lg:hidden">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
@@ -111,8 +111,8 @@ const Navbar = () => {
 
                     <NavLink to="/">
                         <div className="flex items-center justify-start">
-                            <p className="font-festive text-4xl lg:flex hidden  items-center font-bold text-primary ">RunFlow</p>
-                            <img className="w-16 h-11 lg:-ml-4" src="/assets/WebLogo.png" alt="RunFlow" />
+                            <p className="webNameFont text-4xl lg:flex hidden items-center font-[1000] text-primary ">Runners.bd</p>
+                            <img className="w-16 h-11 -ml-2" src="/assets/WebLogo.png" alt="Runners.bd" />
                         </div>
                     </NavLink>
                 </div>
@@ -120,7 +120,7 @@ const Navbar = () => {
                 <div className="flex">
                     {user ? (
                         <>
-                            <div className="navbar-center">
+                            <div className=" navbar-center">
                                 <ul className="flex items-center gap-3 px-1">
                                     <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
@@ -174,7 +174,7 @@ const Navbar = () => {
                         </>
                     ) : (
                         <>
-                            <div className="navbar-center">
+                            <div className=" navbar-center">
                                 <ul className="flex items-center gap-3 px-1">
                                     <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""

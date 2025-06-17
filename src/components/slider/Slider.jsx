@@ -10,13 +10,13 @@ import { ChevronsDown } from '../shared/ChevronsDown';
 export default function App() {
     return (
         <>
-            <Swiper navigation={true} modules={[Navigation]} className="fontJakarta mySwiper rounded-lg">
+            <Swiper navigation={true} modules={[Navigation]} className="poppins mySwiper rounded-lg">
                 {/* 1st - Explore */}
                 <SwiperSlide className="relative h-[80vh] bg-cover bg-center bg-[url('/assets/Image2.jpg')]">
                     <div className="absolute inset-0 bg-opacity-60"></div>
                     <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9 ">
-                            <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                            <h5 className="poppins text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Explore All Marathons in One Place
                             </h5>
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">
@@ -34,7 +34,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-opacity-60"></div>
                     <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
-                            <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                            <h5 className="poppins text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Add Your Own Marathon in Minutes
                             </h5>
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">
@@ -52,7 +52,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-opacity-60"></div>
                     <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
-                            <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                            <h5 className="poppins text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Apply to Join Any Marathon You Love
                             </h5>
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">
@@ -70,7 +70,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-opacity-60"></div>
                     <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
-                            <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                            <h5 className="poppins text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 All-in-One Dashboard for Marathoners
                             </h5>
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">
@@ -88,7 +88,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-opacity-60"></div>
                     <div className="relative flex justify-center items-center text-center my-28 mx-8 px-8 rounded-3xl bg-base-300/60 transform transition duration-300 hover:scale-105 hover:shadow-xl">
                         <div className="w-full text-center space-y-6 py-9">
-                            <h5 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                            <h5 className="poppins text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                                 Running is Serious, But Fun Too!
                             </h5>
                             <p className="text-sm sm:text-base md:text-lg max-w-xl mx-auto">

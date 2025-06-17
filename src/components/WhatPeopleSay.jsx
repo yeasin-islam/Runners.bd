@@ -31,7 +31,9 @@ const WhatPeopleSay = () => {
     return (
         <section className="bg-base-100">
             <div className='fontJakarta container mx-auto py-12'>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">What People Say</h2>
+                <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">
+                    What Our <span className="text-success">Runners</span> Say
+                </h2>
                 <p className="max-w-2xl mx-auto mb-8 text-center">Hear from real runners who’ve joined our marathons - their stories, experiences, and inspiration await!</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4 lg:mx-0">

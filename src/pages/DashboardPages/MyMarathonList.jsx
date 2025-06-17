@@ -108,7 +108,7 @@ const MyMarathonList = () => {
         <section className='fontJakarta'>
             <Helmet>
                 <title>
-                    My Marathon List | RunFlow
+                    My Marathon List | Runners.bd
                 </title>
             </Helmet>
             <div className="container px-4 py-10 mx-auto">

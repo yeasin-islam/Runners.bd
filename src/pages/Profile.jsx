@@ -28,7 +28,7 @@ const Profile = () => {
   return (
     <section className="fontJakarta flex items-center justify-center p-10 shadow-2xl popins bg-base-200 rounded-xl">
       <Helmet>
-        <title>Profile | RunFlow</title>
+        <title>Profile | Runners.bd</title>
       </Helmet>
       <div className="w-full max-w-sm">
         <motion.div
@@ -38,7 +38,7 @@ const Profile = () => {
               duration: 0.4,
               scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
             }} className="shadow-2xl card bg-base-100">
-          <h1 className="pt-6 text-3xl font-bold text-center lg:text-5xl md:text-4xl">Profile</h1>
+          <h1 className="poppins pt-6 text-3xl font-bold text-center lg:text-5xl md:text-4xl">Profile</h1>
 
           <div className="card-body">
             {user && (

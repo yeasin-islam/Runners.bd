@@ -77,7 +77,7 @@ const AddMarathon = () => {
         <section className='fontJakarta container px-4 mx-auto my-8'>
             <Helmet>
                 <title>
-                    Add Marathon | RunFlow
+                    Add Marathon | Runners.bd
                 </title>
             </Helmet>
             <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300 border border-primary ">

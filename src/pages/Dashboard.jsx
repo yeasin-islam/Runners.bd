@@ -4,10 +4,10 @@ import { Outlet, NavLink } from 'react-router';
 const Dashboard = () => {
 
   return (
-    <div className="fontJakarta drawer lg:drawer-open drawer-open-top">
+    <div className="poppins drawer lg:drawer-open drawer-open-top">
       <Helmet>
         <title>
-          Dashboard | RunFlow
+          Dashboard | Runners.bd
         </title>
       </Helmet>
       <input type="checkbox" className="drawer-toggle" />

@@ -79,7 +79,7 @@ const MarathonDetails = () => {
     return (
         <section className='fontJakarta container px-4 mx-auto my-8'>
             <Helmet>
-                <title>Marathon Details | RunFlow</title>
+                <title>Marathon Details | Runners.bd</title>
             </Helmet>
             <div className='container mx-auto'>
                 <div className=" px-4 my-8 popins sm:px-6 lg:px-8 bg-base-300 p-10 rounded-md shadow-md border border-primary">
