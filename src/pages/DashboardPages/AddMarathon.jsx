@@ -82,8 +82,7 @@ const AddMarathon = () => {
             </Helmet>
             <div className="flex flex-col items-center justify-center pb-10 shadow-lg rounded-xl bg-base-300 border border-primary ">
                 <div className='w-full max-w-2xl px-4 mt-6 text-center'>
-                    <h2 className="my-4 text-3xl font-bold md:text-4xl">Add Your Marathon</h2>
-                    <p className="mb-6 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, eum.</p>
+                    <h2 className="my-4 text-3xl font-bold md:text-4xl lg:text-5xl mb-6 underline">Add Your Marathon</h2>
                 </div>
 
                 <form onSubmit={handleAddMarathon} className="grid w-full max-w-5xl grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-10 ">

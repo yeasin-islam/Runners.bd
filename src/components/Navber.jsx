@@ -53,7 +53,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="fontJakarta  bg-base-300">
+        <div className="fontJakarta  bg-base-300 sticky top-0 z-50">
             <div className="container flex justify-between py-2 mx-auto navbar">
                 <div className="navbar-start">
                     <div className=" bg-base-300 dropdown lg:hidden">
@@ -65,7 +65,7 @@ const Navbar = () => {
 
                         <ul
                             tabIndex={0}
-                            className="z-50 p-2 mt-3 space-y-2 rounded shadow bg-base-300 menu menu-sm dropdown-content bg-base-100 w-52"
+                            className="z-50 p-2 mt-3 space-y-2 rounded shadow bg-base-300 menu menu-sm dropdown-content w-52"
                         >
                             <li>
                                 <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/">Home</NavLink>
