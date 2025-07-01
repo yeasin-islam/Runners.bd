@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
           Privacy Policy
         </h1>
 
-        <p className="text-gray-600 text-center max-w-2xl mx-auto">
+        <p className=" text-center max-w-2xl mx-auto">
           We value your trust. Here's how we collect, use, and protect your personal information at Runners.bd.
         </p>
 

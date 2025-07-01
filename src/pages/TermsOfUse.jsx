@@ -13,7 +13,7 @@ const TermsOfUse = () => {
           Terms of Use
         </h1>
 
-        <p className="text-gray-600 text-center max-w-2xl mx-auto">
+        <p className=" text-center max-w-2xl mx-auto">
           Please read these terms carefully before using our platform. By accessing or using Runners.bd, you agree to comply with and be bound by the following terms.
         </p>
 
