@@ -30,26 +30,53 @@ const WhatPeopleSay = () => {
 
     return (
         <section className="bg-base-100">
-            <div className='fontJakarta container mx-auto py-12'>
-                <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2">
-                    What Our <span className="text-success">Runners</span> Say
+            <div className="fontJakarta container mx-auto py-12">
+                <h2
+                    className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4"
+                    data-aos="fade-up"
+                >
+                    What Our Runners Say
                 </h2>
-                <p className="max-w-2xl mx-auto mb-8 text-center">Hear from real runners who’ve joined our marathons - their stories, experiences, and inspiration await!</p>
+                <p
+                    className="max-w-2xl mx-auto mb-8 text-center"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+                    Hear from real runners who’ve joined our marathons - their stories, experiences, and inspiration await!
+                </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4 lg:mx-0">
                     {displayReviews.length === 0 ? (
-                        <p className="text-center col-span-full text-gray-500">No reviews yet. Be the first to share your experience!</p>
+                        <p
+                            className="text-center col-span-full text-gray-500"
+                            data-aos="fade-up"
+                        >
+                            No reviews yet. Be the first to share your experience!
+                        </p>
                     ) : (
-                        displayReviews.map(({ _id, name, location, message, photo, rating = 0 }) => (
-                            <div key={_id} className="bg-base-300 shadow-md rounded-xl p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl border border-secondary">
+                        displayReviews.map(({ _id, name, location, message, photo, rating = 0 }, index) => (
+                            <div
+                                key={_id}
+                                className="bg-base-300 shadow-md rounded-xl p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl border border-secondery"
+                                data-aos="zoom-in"
+                                data-aos-delay={index * 150}
+                            >
                                 <div className="flex items-center mb-4 gap-4">
-                                    <img src={photo} alt={name} className="w-14 h-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden" />
+                                    <img
+                                        src={photo}
+                                        alt={name}
+                                        className="w-14 h-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden"
+                                    />
                                     <div>
                                         <h4 className="font-semibold text-lg">{name}</h4>
                                         <p className="text-sm text-gray-500">{location}</p>
                                     </div>
                                 </div>
-                                <p className="italic mb-2">“{message.slice(0, 80)}{message.length > 80 ? '...' : ''}”</p>
+                                <p className="italic mb-2">
+                                    “{message.slice(0, 80)}
+                                    {message.length > 80 ? '...' : ''}
+                                    ”
+                                </p>
                                 <div className="flex gap-1">
                                     {[...Array(5)].map((_, i) => (
                                         <FaStar key={i} className={i < rating ? 'text-yellow-500' : 'text-gray-400'} />
@@ -61,8 +88,8 @@ const WhatPeopleSay = () => {
                 </div>
 
                 {reviews.length > 3 && (
-                    <div className="flex justify-center mt-8">
-                        <button onClick={handleToggle} className='btn btn-primary'>
+                    <div className="flex justify-center mt-8" data-aos="fade-up" data-aos-delay={displayReviews.length * 150}>
+                        <button onClick={handleToggle} className="btn btn-primary">
                             {showAll ? 'Show Less' : 'Show All'}
                         </button>
                     </div>

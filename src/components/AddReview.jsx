@@ -72,12 +72,13 @@ const AddReview = () => {
     };
 
     return (
-        <section className="py-12 bg-base-100 popins">
+        <section className="py-12 bg-base-100 popins" data-aos="fade-up">
             <div className="fontJakarta container mx-auto px-4 max-w-xl text-center ">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Share Your Experience</h2>
-                <p className="mb-8">We'd love to hear your feedback!</p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">Share Your Experience</h2>
+                <p className="mb-8" data-aos="fade-up" data-aos-delay="200">We'd love to hear your feedback!</p>
 
-                <form onSubmit={handleSubmit} className="bg-base-300 p-6 rounded-xl shadow-md space-y-4 border border-primary">
+                <form onSubmit={handleSubmit} className="bg-base-300 p-6 rounded-xl shadow-md space-y-4 border border-primary" data-aos="zoom-in"
+                    data-aos-delay="300">
                     <input
                         type="text"
                         value={name}

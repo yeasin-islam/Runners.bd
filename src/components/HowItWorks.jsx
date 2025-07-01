@@ -7,7 +7,7 @@ const HowItWorks = () => {
             id: 1,
             title: 'All Marathons',
             description:
-                'Explore events across Bangladesh. Check dates, locations, distances, and registration timelines — all in one place.',
+                'Explore events across Bangladesh. Check dates, locations, distances, and registration timelines - all in one place.',
             icon: <FaRunning className="text-4xl text-primary" />,
         },
 
@@ -15,7 +15,7 @@ const HowItWorks = () => {
             id: 2,
             title: 'Add Your Marathon',
             description:
-               'Add your marathon effortlessly with all the details — distance, location, date, and more. Share it with thousands of runners today!',
+               'Add your marathon effortlessly with all the details - distance, location, date, and more. Share it with thousands of runners today!',
             icon: <FaPlus className="text-4xl text-primary" />,
         },
         {
@@ -35,27 +35,39 @@ const HowItWorks = () => {
     ];
 
     return (
-        <section className="bg-base-100">
-            <div className='fontJakarta py-12 container mx-auto'>
-                <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">How It <span className="text-success">Works</span>
-                </h2>
-                <p className="max-w-2xl mx-auto mb-8 text-center">Easily discover, explore, and register for marathons in just a few clicks - your running journey starts here!</p>
+         <section className="bg-base-100">
+      <div className="fontJakarta py-12 container mx-auto">
+        <h2
+          className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4"
+          data-aos="fade-up"
+        >
+          How It Works
+        </h2>
+        <p
+          className="max-w-2xl mx-auto mb-8 text-center"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Easily discover, explore, and register for marathons in just a few clicks - your running journey starts here!
+        </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 card mx-4 lg:mx-0 ">
-                    {steps.map(step => (
-                        <div
-                            key={step.id}
-                            className="text-center p-6 bg-base-300 rounded-xl shadow-md transition transform duration-300 hover:scale-105 hover:shadow-xl border border-secondery"
-                        >
-                            <div className="mb-4 flex justify-center">{step.icon}</div>
-                            <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                            <hr />
-                            <p className="text-sm mt-3">{step.description}</p>
-                        </div>
-                    ))}
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 card mx-4 lg:mx-0">
+          {steps.map((step, index) => (
+            <div
+              key={step.id}
+              className="text-center p-6 bg-base-300 rounded-xl shadow-md transition transform duration-300 hover:scale-105 hover:shadow-xl border border-secondery"
+              data-aos="zoom-in"
+              data-aos-delay={index * 150} // stagger animation by index
+            >
+              <div className="mb-4 flex justify-center">{step.icon}</div>
+              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+              <hr />
+              <p className="text-sm mt-3">{step.description}</p>
             </div>
-        </section>
+          ))}
+        </div>
+      </div>
+    </section>
     );
 };
 

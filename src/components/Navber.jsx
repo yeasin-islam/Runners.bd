@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
-import { FaUserCircle } from "react-icons/fa";
-import { MdLogout } from "react-icons/md";
+import { FaUserCircle, FaUserPlus } from "react-icons/fa";
+import { MdLogin, MdLogout } from "react-icons/md";
 
 
 const Navbar = () => {
@@ -70,9 +70,7 @@ const Navbar = () => {
                             <li>
                                 <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/">Home</NavLink>
                             </li>
-                            <li>
-                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/marathons">All Marathon</NavLink>
-                            </li>
+
 
                             {user ? (
                                 <>
@@ -106,6 +104,10 @@ const Navbar = () => {
                                 <>
                                 </>
                             )}
+
+                            <li><NavLink className={({ isActive }) =>
+                                isActive ? "text-indigo-500" : ""
+                            } to="/about">About Us</NavLink></li>
                         </ul>
                     </div>
 
@@ -134,6 +136,9 @@ const Navbar = () => {
                                     <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
                                     } to="/profile">Profile</NavLink></li>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
+                                        isActive ? "text-indigo-500" : ""
+                                    } to="/about">About Us</NavLink></li>
                                     <p>{SunMun}</p>
                                     <div className="relative group">
                                         {/* Avatar and trigger */}
@@ -181,10 +186,20 @@ const Navbar = () => {
                                     } to="/">Home</NavLink></li>
                                     <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                         isActive ? "text-indigo-500" : ""
-                                    } to="/marathons">All Marathon</NavLink></li>
+                                    } to="/about">About Us</NavLink></li>
                                     <p>{SunMun}</p>
-                                    <li><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">Login</NavLink></li>
-                                    <li><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">SignUp</NavLink></li>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">Login</NavLink></li>
+                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">SignUp</NavLink></li>
+                                    <li className="lg:hidden">
+                                        <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">
+                                            <MdLogin className="w-4 text-2xl font-bold" />
+                                        </NavLink>
+                                    </li>
+                                    <li className="lg:hidden">
+                                        <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">
+                                            <FaUserPlus className="w-4" />
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </div>
 

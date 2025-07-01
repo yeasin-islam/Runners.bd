@@ -104,20 +104,29 @@ const SignUp = () => {
       <Helmet>
         <title>SignUp | Runners.bd</title>
       </Helmet>
-      <div className="container mx-auto ">
-        <div className="flex items-center justify-center py-10 popins  rounded-xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.4,
-              scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
-            }}className="gap-14 flex flex-col md:flex md:flex-row items-center py-6 px-4 mx-6 lg:p-10 lg:px-20 rounded-2xl shadow-xl bg-base-300  border border-primary ">
-            <Lottie style={{ width: '300px' }} animationData={LottieAnimation} loop={true} />
-            <div className="w-full max-w-sm">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-center py-10 popins rounded-xl">
+          <div
+            className="gap-14 flex flex-col md:flex-row items-center py-6 px-4 mx-6 lg:p-10 lg:px-20 rounded-2xl shadow-xl bg-base-300 border border-primary"
+            data-aos="fade-up"
+          >
+            {/* Lottie animation */}
+            <div data-aos="zoom-in" data-aos-delay="100">
+              <Lottie style={{ width: '300px' }} animationData={LottieAnimation} loop={true} />
+            </div>
+
+            {/* Form Card */}
+            <div className="w-full max-w-sm" data-aos="fade-up" data-aos-delay="200">
               <div className="border border-primary shadow-2xl card bg-base-100 mx-6 mb-4 lg:mb-0 lg:mx-0">
-                <h1 className="[poppins p-5 rounded-t-md text-2xl font-bold text-center bg-primary text-primary-content/100">Sign Up</h1>
+                <h1 className="[poppins p-5 rounded-t-md text-2xl font-bold text-center bg-primary text-primary-content/100">
+                  Sign Up
+                </h1>
+
                 <div className="card-body">
+                  <button onClick={handleGoogleSignup} className="w-full mb-2 btn btn-neutral">
+                    <FaGoogle /> <span>Sign Up with Google</span>
+                  </button>
+                  <div className="divider">OR</div>
                   <form onSubmit={handleSubmit}>
                     <label className="label">Name</label>
                     <input
@@ -170,13 +179,6 @@ const SignUp = () => {
                       Sign Up
                     </button>
                   </form>
-
-                  <div className="divider">OR</div>
-
-                  <button onClick={handleGoogleSignup} className="w-full mb-2 btn">
-                    <FaGoogle /> <span>Sign Up with Google</span>
-                  </button>
-
                   <div className="mt-4 text-center">
                     Already signed up?{" "}
                     <Link className="text-blue-600 underline" to="/login">
@@ -186,10 +188,11 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
+
 
   );
 };

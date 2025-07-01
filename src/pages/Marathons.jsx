@@ -49,7 +49,7 @@ const Marathons = () => {
 
         const filtered = sortedMarathons.filter((marathon) =>
             marathon.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            marathon.distance?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+            marathon.distance?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             marathon.location?.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
@@ -71,7 +71,9 @@ const Marathons = () => {
             </Helmet>
             <div className="container px-4 py-12 mx-auto text-center md:px-0">
                 <div className="mb-8">
-                    <h2 className="mb-2 text-3xl font-bold md:text-4xl lg:text-5xl">All <span className="text-primary">Marathons</span></h2>
+                    <h2 className="mb-2 text-3xl font-bold md:text-4xl lg:text-5xl">
+                        All Marathons
+                    </h2>
                     <p className="max-w-2xl mx-auto mb-8">Browse marathons by date - newest or oldest first.</p>
 
                     <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-end">
@@ -94,18 +96,20 @@ const Marathons = () => {
                 ) : displayMarathons.length > 0 ? (
                     <Suspense fallback={<LoadingFallback />}>
                         <div className="grid grid-cols-1 gap-6 mb-10 sm:grid-cols-2 lg:grid-cols-3">
-                            {displayMarathons.map((marathon) => (
-                                <MarathonCard key={marathon._id} marathon={marathon} />
+                            {displayMarathons.map((marathon, index) => (
+                                <div key={marathon._id} data-aos="zoom-in" data-aos-delay={index * 100}>
+                                    <MarathonCard marathon={marathon} />
+                                </div>
                             ))}
                         </div>
                     </Suspense>
                 ) : (
-                    <div className="py-10 text-lg font-semibold text-center text-error">
+                    <div className="py-10 text-lg font-semibold text-center text-error" data-aos="fade-up">
                         No marathons found.
                     </div>
                 )}
 
-                <div className="flex justify-center">
+                <div className="flex justify-center" data-aos="fade-up" data-aos-delay={displayMarathons.length * 100}>
                     <Button
                         onClick={() => {
                             setShowAll((prev) => !prev);

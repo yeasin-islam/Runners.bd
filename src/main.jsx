@@ -1,13 +1,19 @@
-import { StrictMode } from 'react'
+import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { RouterProvider } from 'react-router'
 import AuthProvider from './context/AuthProvider.jsx'
-// import { HelmetProvider } from 'react-helmet-async'
-// import CartProvider from './providers/CartProvider.jsx'
 import { Toaster } from 'react-hot-toast'
 import Router from './routes/router.jsx'
 import { HelmetProvider } from 'react-helmet-async'
+import 'aos/dist/aos.css';
+import Aos from 'aos';
+
+Aos.init({
+  duration: 700,
+  easing: 'ease-in-out',
+  once: true,
+});
 
 createRoot(document.getElementById('root')).render(
   <HelmetProvider>

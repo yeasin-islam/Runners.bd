@@ -14,6 +14,11 @@ import MyMarathonList from "../pages/DashboardPages/MyMarathonList";
 import MyApplyList from "../pages/DashboardPages/MyApplyList";
 import MarathonDetails from "../pages/MarathonDetails";
 import MarathonRegistration from "../pages/MarathonRegistration";
+import TermsOfUse from "../pages/TermsOfUse";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import CookiePolicy from "../pages/CookiePolicy";
+import AboutUs from "../pages/AboutUs";
+import ResetPassword from "../pages/ResetPassword";
 
 
 const Router = createBrowserRouter([
@@ -41,6 +46,10 @@ const Router = createBrowserRouter([
                 path: '/marathons',
                 element: <PrivateRoute><Marathons /></PrivateRoute>,
                 hydrateFallbackElement: <LoadingFallback />,
+            },
+            {
+                path: "/about",
+                element: <AboutUs />
             },
             {
                 path: '/dashboard',
@@ -71,6 +80,22 @@ const Router = createBrowserRouter([
             {
                 path: '/marathon-registration/:id',
                 element: <PrivateRoute><MarathonRegistration /></PrivateRoute>,
+            },
+            {
+                path: "/terms",
+                element: <TermsOfUse />
+            },
+            {
+                path: "/privacy",
+                element: <PrivacyPolicy />
+            },
+            {
+                path: "/cookies",
+                element: <CookiePolicy />
+            },
+            {
+                path: "/reset-password",
+                element: <ResetPassword />
             },
         ]
     },

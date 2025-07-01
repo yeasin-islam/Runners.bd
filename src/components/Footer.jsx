@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaGlobe, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
 const Footer = () => {
@@ -64,6 +64,10 @@ const Footer = () => {
                                         <li><NavLink className={({ isActive }) =>
                                             isActive ? "text-indigo-500" : ""
                                         } to="/profile">Profile</NavLink></li>
+
+                                        <li><NavLink className={({ isActive }) =>
+                                            isActive ? "text-indigo-500" : ""
+                                        } to="/about">About Us</NavLink></li>
                                     </ul>
                                 </>
                             ) : (
@@ -72,9 +76,10 @@ const Footer = () => {
                                         <li><NavLink className={({ isActive }) =>
                                             isActive ? "text-indigo-500" : ""
                                         } to="/">Home</NavLink></li>
+
                                         <li><NavLink className={({ isActive }) =>
                                             isActive ? "text-indigo-500" : ""
-                                        } to="/marathons">All Marathon</NavLink></li>
+                                        } to="/about">About Us</NavLink></li>
                                     </ul>
                                 </>
                             )
@@ -89,19 +94,19 @@ const Footer = () => {
                             <a href="https://www.facebook.com/yeasin.islam2018" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
                             <a href="https://www.linkedin.com/in/yeasin-islam75" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
                             <a href="https://x.com/yeasin_islam75" target="_blank" rel="noopener noreferrer"><FaSquareXTwitter /></a>
-                            <a href="https://www.youtube.com/@ProgrammingHero" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+                            <a href="https://yeasinislam08.web.app" target="_blank" rel="noopener noreferrer"><FaGlobe /></a>
                         </div>
                     </div>
                 </footer>
                 <hr className="container mx-auto" />
                 <div className="poppins py-4 text-center flex flex-col-reverse items-center space-y-2 space-y-reverse lg:flex-row lg:justify-between lg:space-y-0">
                     <p className=" text-sm">
-                        © {new Date().getFullYear()} – All rights reserved by Runners.bd.app
+                        © {new Date().getFullYear()} Runners.bd. All rights reserved.
                     </p>
                     <ul className="flex justify-center gap-2 text-sm">
-                        <li><a className="link link-hover">Terms of Use</a></li>
-                        <li><a className="link link-hover">Privacy Policy</a></li>
-                        <li><a className="link link-hover">Cookie Policy</a></li>
+                        <li><Link to="/terms">Terms of Use</Link></li>
+                        <li><Link to="/privacy">Privacy Policy</Link></li>
+                        <li><Link to="/cookies">Cookie Policy</Link></li>
                     </ul>
                 </div>
             </div>

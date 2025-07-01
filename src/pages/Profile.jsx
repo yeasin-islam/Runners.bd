@@ -73,28 +73,20 @@ const Profile = () => {
       <Helmet>
         <title>Profile | Runners.bd</title>
       </Helmet>
+
       <div className="flex flex-col items-center justify-center p-10 rounded-xl max-w-4xl mx-auto">
-        <div className="w-full max-w-xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.4,
-              scale: { type: "spring", visualDuration: 2, bounce: 0.3 },
-            }} className="shadow-2xl card bg-base-100">
+
+        {/* Profile Card */}
+        <div className="w-full max-w-xl" data-aos="fade-up">
+          <div className="shadow-2xl card bg-base-100">
             <h1 className="poppins pt-6 text-3xl font-bold text-center lg:text-5xl md:text-4xl">Profile</h1>
 
             <div className="p-8">
               {user && (
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-12">
-                  {/* Display profile image or fallback image */}
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-12" data-aos="fade-up" data-aos-delay="100">
                   <div className="flex-shrink-0 w-32 h-32 rounded-full ring ring-primary ring-offset-2 overflow-hidden bg-base-200 flex items-center justify-center">
                     {user.photoURL ? (
-                      <img
-                        className="object-cover w-full h-full"
-                        src={user.photoURL}
-                        alt="Profile"
-                      />
+                      <img className="object-cover w-full h-full" src={user.photoURL} alt="Profile" />
                     ) : (
                       <FaUserCircle className="text-6xl text-gray-600" />
                     )}
@@ -102,22 +94,22 @@ const Profile = () => {
 
                   <div className="font-bold text-2xl text-center md:text-start">
                     <div className="font-extrabold">{user.displayName || "No Name Set"}</div>
-                    <div className="text-lg text-center opacity-70">
-                      {user.email || "Email not available"}
-                    </div>
+                    <div className="text-lg text-center opacity-70">{user.email || "Email not available"}</div>
                     <p className="text-lg opacity-70">Account Type: <span className="font-medium capitalize">User</span></p>
                   </div>
                 </div>
               )}
 
-              <div className="mt-6 text-center">
+              {/* Edit Button */}
+              <div className="mt-6 text-center" data-aos="zoom-in" data-aos-delay="150">
                 <button onClick={() => setShow(!show)} className="btn btn-success">
                   {show ? "Cancel" : "Edit Profile"}
                 </button>
               </div>
 
+              {/* Edit Form */}
               {show && (
-                <form onSubmit={handleProfileUpdate} className="mt-6 space-y-4 text-left">
+                <form onSubmit={handleProfileUpdate} className="mt-6 space-y-4 text-left" data-aos="fade-up" data-aos-delay="200">
                   <fieldset className="fieldset">
                     <label className="label">Name</label>
                     <input
@@ -146,28 +138,32 @@ const Profile = () => {
                 </form>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
+
+        {/* Stat Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 w-full">
-          <div className="bg-primary text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform">
+          <div className="bg-primary text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform" data-aos="fade-up" data-aos-delay="100">
             <h4 className="text-lg font-semibold mb-1">Total Marathons</h4>
             <p className="text-4xl font-bold">{totalMarathons}</p>
           </div>
 
-          <div className="bg-secondary text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform">
+          <div className="bg-secondary text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform" data-aos="fade-up" data-aos-delay="200">
             <h4 className="text-lg font-semibold mb-1">My Marathons</h4>
             <p className="text-4xl font-bold">{myMarathons}</p>
           </div>
 
-          <div className="bg-accent text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform">
+          <div className="bg-accent text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform" data-aos="fade-up" data-aos-delay="300">
             <h4 className="text-lg font-semibold mb-1">My Apply Marathons</h4>
             <p className="text-2xl font-bold capitalize">{myApplys}</p>
           </div>
-          <div className="bg-accent text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform">
+
+          <div className="bg-neutral text-white rounded-xl p-6 shadow hover:scale-[1.02] transition-transform" data-aos="fade-up" data-aos-delay="400">
             <h4 className="text-lg font-semibold mb-1">Role</h4>
             <p className="text-2xl font-bold capitalize">{user?.role || "User"}</p>
           </div>
         </div>
+
       </div>
     </section>
   );

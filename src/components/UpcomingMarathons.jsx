@@ -12,13 +12,27 @@ const UpcomingMarathons = () => {
     return (
         <section className="bg-base-100 ">
             <div className='fontJakarta container mx-auto py-12'>
-                <h2 className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-primary">
-                    Upcoming <span className="text-success">Marathons</span>
+                <h2
+                    className="poppins text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4"
+                    data-aos="fade-up"
+                >
+                    Upcoming Marathons
                 </h2>
-                <p className="max-w-2xl mx-auto mb-8 text-center">Upcoming marathons across Bangladesh - dates, locations, and distances, all in one place.</p>
+                <p
+                    className="max-w-2xl mx-auto mb-8 text-center"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                >
+                    Upcoming marathons across Bangladesh - dates, locations, and distances, all in one place.
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {marathons.map(marathon => (
-                        <div key={marathon.id} className="card mx-4 md:mx-0 bg-base-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-xl border border-primary">
+                    {marathons.map((marathon, index) => (
+                        <div
+                            key={marathon.id}
+                           className="fontJakarta h-full mx-4 transition duration-300 transform shadow-xl card lg:mx-0 bg-base-300 border border-primary hover:scale-105 hover:shadow-xl"
+                            data-aos="zoom-in"
+                            data-aos-delay={index * 100} // stagger animation delay for each card
+                        >
                             <figure>
                                 <img
                                     src={marathon.image}
@@ -27,7 +41,6 @@ const UpcomingMarathons = () => {
                                 />
                             </figure>
                             <div className="card-body">
-
                                 <h2 className="text-xl font-bold text-center"> {marathon.title}</h2>
                                 <p className="text-gray-500 text-center">{marathon.description}</p>
                                 <p className='font-medium'>🏃 Distance: {marathon.distance}</p>
