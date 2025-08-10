@@ -92,13 +92,13 @@ const Navbar = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/add-marathon">
-                                                        <FaPlusCircle /> Add Marathon
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-applications">
+                                                        <FaClipboardList /> My Apply List
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-applications">
-                                                        <FaClipboardList /> My Apply List
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/add-marathon">
+                                                        <FaPlusCircle /> Add Marathon
                                                     </NavLink>
                                                 </li>
                                             </ul>

@@ -35,23 +35,23 @@ const Dashboard = () => {
 
           <li>
             <NavLink
-              to="/dashboard/add-marathon"
-              className={({ isActive }) =>
-                isActive ? "text-indigo-500 font-bold flex items-center gap-2" : "flex items-center gap-2"
-              }
-            >
-              <FaPlusCircle /> Add Marathon
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
               to="/dashboard/my-applications"
               className={({ isActive }) =>
                 isActive ? "text-indigo-500 font-bold flex items-center gap-2" : "flex items-center gap-2"
               }
             >
               <FaClipboardList /> My Apply List
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/dashboard/add-marathon"
+              className={({ isActive }) =>
+                isActive ? "text-indigo-500 font-bold flex items-center gap-2" : "flex items-center gap-2"
+              }
+            >
+              <FaPlusCircle /> Add Marathon
             </NavLink>
           </li>
         </ul>

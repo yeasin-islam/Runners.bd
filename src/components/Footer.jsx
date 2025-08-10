@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { FaFacebook, FaGlobe, FaLinkedin, FaYoutube, FaHome, FaListUl, FaPlusCircle, FaClipboardList, FaUserCircle, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { MdDashboard } from "react-icons/md";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 
@@ -41,12 +40,12 @@ const Footer = () => {
                                 </li>
                                 <li className="hidden lg:flex">
                                     <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-marathons">
-                                        <MdDashboard /> Dashboard
+                                        <FaClipboardList /> Dashboard
                                     </NavLink>
                                 </li>
                                 <li className="lg:hidden">
                                     <details>
-                                        <summary className="cursor-pointer">Dashboard</summary>
+                                        <summary className="cursor-pointer flex items-center gap-2"> <FaClipboardList />Dashboard</summary>
                                         <ul className="pt-2 pl-2 space-y-1">
                                             <li>
                                                 <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-marathons">
@@ -54,13 +53,13 @@ const Footer = () => {
                                                 </NavLink>
                                             </li>
                                             <li>
-                                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/add-marathon">
-                                                    <FaPlusCircle /> Add Marathon
+                                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-applications">
+                                                    <FaClipboardList /> My Apply List
                                                 </NavLink>
                                             </li>
                                             <li>
-                                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-applications">
-                                                    <FaClipboardList /> My Apply List
+                                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/add-marathon">
+                                                    <FaPlusCircle /> Add Marathon
                                                 </NavLink>
                                             </li>
                                         </ul>
@@ -92,27 +91,6 @@ const Footer = () => {
                             </ul>
                         )}
                     </div>
-
-                    {/* Newsletter */}
-                    {/* <div className="flex flex-col items-center text-center sm:items-start">
-                        <h6 className="font-bold footer-title flex items-center gap-2">
-                            <FaEnvelope /> Newsletter
-                        </h6>
-                        <p className="mt-2 text-sm max-w-xs">
-                            Subscribe to get the latest marathon updates and tips delivered to your inbox.
-                        </p>
-                        <form className="flex flex-col w-full gap-2 mt-3 sm:flex-row">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="w-full px-3 py-2 rounded input input-bordered"
-                                required
-                            />
-                            <button type="submit" className="btn btn-primary">
-                                Subscribe
-                            </button>
-                        </form>
-                    </div> */}
 
                     {/* Social Media */}
                     <div>

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import LoadingFallback from '../../components/shared/LoadingFallback';
-import { FaLocationDot } from 'react-icons/fa6';
+import { FaLocationDot, FaTrash } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 import { Helmet } from 'react-helmet-async';
+import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const MyApplyList = () => {
     const { user } = useAuth();
@@ -15,9 +17,11 @@ const MyApplyList = () => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedApplication, setSelectedApplication] = useState(null);
-    const axiosSecure = UseAxiosSecure()
+    const [sortOrder, setSortOrder] = useState('newest'); // "newest" or "oldest"
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
 
-    // console.log("token in the context", user.accessToken)
+    const axiosSecure = UseAxiosSecure();
 
     useEffect(() => {
         if (user?.email && user.accessToken) {
@@ -34,7 +38,30 @@ const MyApplyList = () => {
         }
     }, [user, axiosSecure]);
 
+    // Filter + sort
+    const filteredApplications = myApplications
+        .filter(app =>
+            app.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            app.distance?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            app.location?.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .sort((a, b) => {
+            const dateA = new Date(a.createdAt);
+            const dateB = new Date(b.createdAt);
+            return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+        });
 
+    // Pagination
+    const totalPages = Math.ceil(filteredApplications.length / itemsPerPage);
+    const paginatedApplications = filteredApplications.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+    // Reset page when search or sort changes
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm, sortOrder]);
 
     const handleDelete = (_id) => {
         Swal.fire({
@@ -77,7 +104,6 @@ const MyApplyList = () => {
         const formData = new FormData(form);
         const updatedData = Object.fromEntries(formData.entries());
 
-
         axios.put(`${import.meta.env.VITE_API_URL}/applications/${id}`, updatedData)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
@@ -92,7 +118,6 @@ const MyApplyList = () => {
                 }
             })
             .catch(error => {
-                // console.log(error);
                 toast.error('Update failed.');
             })
     };
@@ -100,13 +125,6 @@ const MyApplyList = () => {
     if (loading) {
         return <LoadingFallback />;
     }
-
-    // Filter applications based on title
-    const filteredApplications = myApplications.filter(app =>
-        app.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        app.distance?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        app.location?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     return (
         <section className='fontJakarta'>
@@ -120,14 +138,22 @@ const MyApplyList = () => {
                     <h2 className="mb-2 text-3xl font-bold md:text-5xl">My Applications</h2>
                     <p className='font-bold text-md'>You Applied Marathon So Far: {myApplications.length}</p>
 
-                    <div className="max-w-sm mx-auto mt-4">
+                    <div className="flex flex-col items-center justify-center gap-4 mt-4 sm:flex-row sm:justify-center">
                         <input
                             type="text"
-                            placeholder="🔍Search by title, location or distance..."
+                            placeholder="🔍 Search by title, location or distance..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full input input-bordered"
+                            className="w-full max-w-sm input input-bordered"
                         />
+                        <select
+                            className="select select-bordered max-w-xs"
+                            value={sortOrder}
+                            onChange={(e) => setSortOrder(e.target.value)}
+                        >
+                            <option value="newest">Sort by Newest</option>
+                            <option value="oldest">Sort by Oldest</option>
+                        </select>
                     </div>
                 </div>
 
@@ -155,15 +181,17 @@ const MyApplyList = () => {
                             </thead>
 
                             <tbody>
-                                {filteredApplications.map((application, index) => (
+                                {paginatedApplications.map((application, index) => (
                                     <tr className='transition duration-300 transform hover:scale-100 hover:shadow-2xl' key={application._id}>
-                                        <td>{index + 1}</td>
+                                        <td> <span className="font-semibold">{(currentPage - 1) * itemsPerPage + index + 1}</span></td>
                                         <td>
-                                            <div className="avatar">
-                                                <div className="w-12 h-12 mask mask-squircle">
-                                                    <img src={application.photo} alt={application.title} />
+                                            <Link to={`/marathon-details/${application.marathonId}`}>
+                                                <div className="avatar">
+                                                    <div className="w-12 h-12 mask mask-squircle">
+                                                        <img src={application.photo} alt={application.title} />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         </td>
                                         <td>
                                             <div>
@@ -184,15 +212,43 @@ const MyApplyList = () => {
                                             </div>
                                         </td>
                                         <td className="flex flex-col gap-2 md:flex-row">
-                                            <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm">Update</button>
-                                            <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm">Delete</button>
+                                            <button onClick={() => openUpdateModal(application._id)} className="btn btn-warning btn-sm"><FaEdit /></button>
+                                            <button onClick={() => handleDelete(application._id)} className="btn btn-outline btn-error btn-sm"> <FaTrash /></button>
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
+                )}
 
+                {/* Pagination buttons */}
+                {totalPages > 1 && (
+                    <div className="flex justify-center gap-2 mt-6">
+                        <button
+                            className="btn btn-sm"
+                            disabled={currentPage === 1}
+                            onClick={() => setCurrentPage(prev => prev - 1)}
+                        >
+                            Prev
+                        </button>
+                        {Array.from({ length: totalPages }, (_, i) => (
+                            <button
+                                key={i}
+                                className={`btn btn-sm ${currentPage === i + 1 ? 'btn-active' : ''}`}
+                                onClick={() => setCurrentPage(i + 1)}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+                        <button
+                            className="btn btn-sm"
+                            disabled={currentPage === totalPages}
+                            onClick={() => setCurrentPage(prev => prev + 1)}
+                        >
+                            Next
+                        </button>
+                    </div>
                 )}
 
                 {selectedApplication && (
@@ -230,7 +286,6 @@ const MyApplyList = () => {
                                     <input type="text" name="marathonTitle" value={selectedApplication.marathonTitle} readOnly className="w-full input" />
                                 </div>
 
-
                                 <div className="w-full">
                                     <label className="mb-1 fieldset-legend">Marathon Date</label>
                                     <DatePicker
@@ -239,7 +294,6 @@ const MyApplyList = () => {
                                         readOnly className="w-full input input-bordered"
                                     />
                                 </div>
-
 
                                 <div className="modal-action">
                                     <button type="submit" className="btn btn-primary">
@@ -259,7 +313,6 @@ const MyApplyList = () => {
                 )}
             </div>
         </section>
-
     );
 };
 

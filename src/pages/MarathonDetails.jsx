@@ -74,8 +74,9 @@ const MarathonDetails = () => {
     const endRegPlusOneDay = new Date(endReg);
     endRegPlusOneDay.setDate(endRegPlusOneDay.getDate() + 1);
 
-    const isRegistrationOpen =
-        new Date(startReg) <= today && today <= endRegPlusOneDay;
+    const isStartRegistration = new Date(startReg) <= today;
+    const isEndRegistration = today > new Date(endReg);
+
     return (
         <section className='fontJakarta container px-4 mx-auto my-8'>
             <Helmet>
@@ -134,9 +135,13 @@ const MarathonDetails = () => {
                     </div>
 
                     <div className="justify-end card-actions">
-                        {!isRegistrationOpen ? (
+                        {!isStartRegistration ? (
                             <button className="btn btn-disabled" disabled>
-                                Registration Closed
+                                Wait for Registration to Start
+                            </button>
+                        ) : isEndRegistration ? (
+                            <button className="btn btn-disabled" disabled>
+                                Registration Ended
                             </button>
                         ) : creatBy === currentUserEmail ? (
                             <button className="btn btn-disabled" disabled>

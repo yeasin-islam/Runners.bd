@@ -1,8 +1,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { useNavigate, useLocation } from "react-router";
-import useAuth from "../hooks/useAuth"; // assuming you have this
+import useAuth from "../hooks/useAuth";
 import MarathonCard from "../components/MarathonCard";
-import Button from "../components/shared/Button";
 import LoadingFallback from "../components/shared/LoadingFallback";
 import UseAxiosSecure from "../hooks/UseAxiosSecure";
 import { Helmet } from "react-helmet-async";
@@ -14,11 +13,13 @@ const Marathons = () => {
 
     const [marathons, setMarathons] = useState([]);
     const [displayMarathons, setDisplayMarathons] = useState([]);
-    const [showAll, setShowAll] = useState(false);
     const [sort, setSort] = useState(new URLSearchParams(location.search).get("sort") || "newest");
     const [searchTerm, setSearchTerm] = useState("");
     const [loading, setLoading] = useState(true);
-    const axiosSecure = UseAxiosSecure()
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
+
+    const axiosSecure = UseAxiosSecure();
 
     useEffect(() => {
         if (user?.email) {
@@ -32,11 +33,9 @@ const Marathons = () => {
                     setLoading(false);
                 }
             };
-
             fetchMarathons();
         }
     }, [sort, user?.email, axiosSecure]);
-
 
     useEffect(() => {
         let sortedMarathons = [...marathons];
@@ -53,21 +52,31 @@ const Marathons = () => {
             marathon.location?.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-        setDisplayMarathons(showAll ? filtered : filtered.slice(0, 6));
-    }, [marathons, sort, searchTerm, showAll]);
+        // Pagination logic
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        setDisplayMarathons(filtered.slice(startIndex, endIndex));
+    }, [marathons, sort, searchTerm, currentPage]);
 
     const handleSortChange = (e) => {
         const selectedSort = e.target.value;
         setSort(selectedSort);
+        setCurrentPage(1);
         navigate(`?sort=${selectedSort}`);
     };
+
+    const totalPages = Math.ceil(
+        marathons.filter((m) =>
+            m.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            m.distance?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            m.location?.toLowerCase().includes(searchTerm.toLowerCase())
+        ).length / itemsPerPage
+    );
 
     return (
         <section className="fontJakarta bg-base-200">
             <Helmet>
-                <title>
-                    Marathons | Runners.bd
-                </title>
+                <title>Marathons | Runners.bd</title>
             </Helmet>
             <div className="container px-4 py-12 mx-auto text-center md:px-0">
                 <div className="mb-8">
@@ -81,10 +90,17 @@ const Marathons = () => {
                             type="text"
                             placeholder="🔍 Search by title, distance or location..."
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onChange={(e) => {
+                                setSearchTerm(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="w-full max-w-sm input input-bordered"
                         />
-                        <select className="select select-bordered" value={sort} onChange={handleSortChange}>
+                        <select
+                            className="select select-bordered"
+                            value={sort}
+                            onChange={handleSortChange}
+                        >
                             <option value="newest">Newest First</option>
                             <option value="oldest">Oldest First</option>
                         </select>
@@ -102,22 +118,41 @@ const Marathons = () => {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Pagination */}
+                        {totalPages > 1 && (
+                            <div className="flex justify-center gap-2">
+                                <button
+                                    className="btn btn-sm"
+                                    disabled={currentPage === 1}
+                                    onClick={() => setCurrentPage((prev) => prev - 1)}
+                                >
+                                    Prev
+                                </button>
+                                {Array.from({ length: totalPages }, (_, i) => (
+                                    <button
+                                        key={i}
+                                        className={`btn btn-sm ${currentPage === i + 1 ? "btn-active" : ""}`}
+                                        onClick={() => setCurrentPage(i + 1)}
+                                    >
+                                        {i + 1}
+                                    </button>
+                                ))}
+                                <button
+                                    className="btn btn-sm"
+                                    disabled={currentPage === totalPages}
+                                    onClick={() => setCurrentPage((prev) => prev + 1)}
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        )}
                     </Suspense>
                 ) : (
                     <div className="py-10 text-lg font-semibold text-center text-error" data-aos="fade-up">
                         No marathons found.
                     </div>
                 )}
-
-                <div className="flex justify-center" data-aos="fade-up" data-aos-delay={displayMarathons.length * 100}>
-                    <Button
-                        onClick={() => {
-                            setShowAll((prev) => !prev);
-                            if (showAll) window.scrollTo(0, 0);
-                        }}
-                        label={showAll ? "Show Less" : "Show All"}
-                    />
-                </div>
             </div>
         </section>
     );
