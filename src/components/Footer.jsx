@@ -35,7 +35,7 @@ const Footer = () => {
                                         } to="/">Home</NavLink></li>
                                         <li><NavLink className={({ isActive }) =>
                                             isActive ? "text-indigo-500" : ""
-                                        } to="/marathons">All Marathon</NavLink></li>
+                                        } to="/marathons">Marathons</NavLink></li>
                                         <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
                                             isActive ? "text-indigo-500" : ""
                                         } to="/dashboard/my-marathons">Dashboard</NavLink></li>
@@ -92,7 +92,7 @@ const Footer = () => {
                         <h6 className="font-bold footer-title">Follow Us</h6>
                         <div className="flex justify-center gap-4 mt-2 text-2xl sm:justify-start">
                             <a href="https://www.facebook.com/yeasin.islam2018" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
-                            <a href="https://www.linkedin.com/in/yeasin-islam75" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                            <a href="https://www.linkedin.com/in/yeasin-islam10" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
                             <a href="https://x.com/yeasin_islam75" target="_blank" rel="noopener noreferrer"><FaSquareXTwitter /></a>
                             <a href="https://yeasinislam08.web.app" target="_blank" rel="noopener noreferrer"><FaGlobe /></a>
                         </div>
@@ -104,9 +104,15 @@ const Footer = () => {
                         © {new Date().getFullYear()} Runners.bd. All rights reserved.
                     </p>
                     <ul className="flex justify-center gap-2 text-sm">
-                        <li><Link to="/terms">Terms of Use</Link></li>
-                        <li><Link to="/privacy">Privacy Policy</Link></li>
-                        <li><Link to="/cookies">Cookie Policy</Link></li>
+                        <li><NavLink  className={({ isActive }) =>
+                            isActive ? "text-indigo-500" : ""
+                        } to="/terms">Terms of Use</NavLink ></li>
+                        <li><NavLink  className={({ isActive }) =>
+                            isActive ? "text-indigo-500" : ""
+                        } to="/privacy">Privacy Policy</NavLink ></li>
+                        <li><NavLink  className={({ isActive }) =>
+                            isActive ? "text-indigo-500" : ""
+                        } to="/cookies">Cookie Policy</NavLink ></li>
                     </ul>
                 </div>
             </div>

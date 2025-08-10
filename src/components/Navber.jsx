@@ -74,14 +74,14 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
 
-                            <li>
-                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/marathons">
-                                    <FaListUl /> Marathons
-                                </NavLink>
-                            </li>
-
                             {user ? (
                                 <>
+
+                                    <li>
+                                        <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/marathons">
+                                            <FaListUl /> Marathons
+                                        </NavLink>
+                                    </li>
                                     <li>
                                         <details>
                                             <summary className="cursor-pointer flex items-center gap-2"> <FaClipboardList /> Dashboard</summary>

@@ -75,7 +75,7 @@ const PrivacyPolicy = () => {
 
         {/* Footer */}
         <div className="text-sm text-gray-500 text-center pt-6 border-t border-gray-300">
-          Last Updated: {new Date().toLocaleDateString()}
+          Last Updated: June 2025
         </div>
       </div>
     </section>
