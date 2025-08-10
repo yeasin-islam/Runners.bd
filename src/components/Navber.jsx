@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
-import { FaUserCircle, FaUserPlus } from "react-icons/fa";
 import { MdLogin, MdLogout } from "react-icons/md";
+import { FaHome, FaListUl, FaPlusCircle, FaClipboardList, FaInfoCircle, FaUserCircle, FaUserPlus } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -63,51 +63,55 @@ const Navbar = () => {
                             </svg>
                         </div>
 
+                        {/* Mobile Dropdown */}
                         <ul
                             tabIndex={0}
                             className="z-50 p-2 mt-3 space-y-2 rounded shadow bg-base-300 menu menu-sm dropdown-content w-52"
                         >
                             <li>
-                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/">Home</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/">
+                                    <FaHome /> Home
+                                </NavLink>
                             </li>
 
+                            <li>
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/marathons">
+                                    <FaListUl /> Marathons
+                                </NavLink>
+                            </li>
 
                             {user ? (
                                 <>
                                     <li>
                                         <details>
-                                            <summary className="cursor-pointer">Dashboard</summary>
+                                            <summary className="cursor-pointer flex items-center gap-2"> <FaClipboardList /> Dashboard</summary>
                                             <ul className="pl-4">
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/my-marathons">
-                                                        My Marathon List
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-marathons">
+                                                        <FaListUl /> My Marathon List
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/add-marathon">
-                                                        Add Marathon
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/add-marathon">
+                                                        <FaPlusCircle /> Add Marathon
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500" : ""} to="/dashboard/my-applications">
-                                                        My Apply List
+                                                    <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-applications">
+                                                        <FaClipboardList /> My Apply List
                                                     </NavLink>
                                                 </li>
                                             </ul>
                                         </details>
                                     </li>
-                                    <li><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/profile">Profile</NavLink></li>
                                 </>
-                            ) : (
-                                <>
-                                </>
-                            )}
+                            ) : null}
 
-                            <li><NavLink className={({ isActive }) =>
-                                isActive ? "text-indigo-500" : ""
-                            } to="/about">About Us</NavLink></li>
+                            <li>
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/about">
+                                    <FaInfoCircle /> AboutUs
+                                </NavLink>
+                            </li>
                         </ul>
                     </div>
 
@@ -120,90 +124,102 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex">
+                    {/* Desktop Navigation for Logged-in User */}
                     {user ? (
-                        <>
-                            <div className=" navbar-center">
-                                <ul className="flex items-center gap-3 px-1">
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/">Home</NavLink></li>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/marathons">All Marathon</NavLink></li>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/dashboard/my-marathons">Dashboard</NavLink></li>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/profile">Profile</NavLink></li>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/about">About Us</NavLink></li>
-                                    <p>{SunMun}</p>
-                                    <div className="relative group">
-                                        {/* Avatar and trigger */}
-                                        <div className="flex items-center gap-2 cursor-pointer">
-                                            <div className="w-8 h-8 overflow-hidden rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                                {user.photoURL ? (
-                                                    <img
-                                                        className="object-cover w-full h-full"
-                                                        src={user.photoURL}
-                                                        alt="Profile"
-                                                    />
-                                                ) : (
-                                                    <FaUserCircle className="w-full h-full " />
-                                                )}
-                                            </div>
-                                        </div>
+                        <ul className="flex items-center gap-3 px-1">
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/">
+                                    <FaHome /> Home
+                                </NavLink>
+                            </li>
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/marathons">
+                                    <FaListUl /> Marathons
+                                </NavLink>
+                            </li>
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/dashboard/my-marathons">
+                                    <FaClipboardList /> Dashboard
+                                </NavLink>
+                            </li>
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/about">
+                                    <FaInfoCircle /> AboutUs
+                                </NavLink>
+                            </li>
+                            <p>{SunMun}</p>
 
-                                        {/* Hover menu */}
-                                        <div className="absolute right-0 z-50 invisible w-56 p-4 mt-2 transition duration-200 rounded-md shadow-lg opacity-0 bg-base-100 group-hover:opacity-100 group-hover:visible"
-                                            onMouseEnter={(e) => e.stopPropagation()}
-                                            onMouseLeave={(e) => e.stopPropagation()}>
-                                            <p className="font-semibold">{user.displayName || "No Name"}</p>
-                                            <p className="text-xs opacity-70">{user.email || "No Email"}</p>
-                                        </div>
+                            {/* Profile */}
+                            <div className="relative group">
+                                <div className="flex items-center gap-2 cursor-pointer">
+                                    <div className="w-8 h-8 overflow-hidden rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        {user.photoURL ? (
+                                            <img className="object-cover w-full h-full" src={user.photoURL} alt="Profile" />
+                                        ) : (
+                                            <FaUserCircle className="w-full h-full" />
+                                        )}
                                     </div>
-                                    <li>
-                                        <button onClick={logOut} className="hidden btn btn-error lg:flex">
-                                            Log Out
-                                        </button>
-                                    </li>
-                                    <li className="-ml-2">
-                                        <button onClick={logOut} className="btn btn-error lg:hidden">
-                                            <MdLogout />
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <div className=" navbar-center">
-                                <ul className="flex items-center gap-3 px-1">
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/">Home</NavLink></li>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) =>
-                                        isActive ? "text-indigo-500" : ""
-                                    } to="/about">About Us</NavLink></li>
-                                    <p>{SunMun}</p>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">Login</NavLink></li>
-                                    <li className="hidden lg:flex"><NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">SignUp</NavLink></li>
-                                    <li className="lg:hidden">
-                                        <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">
-                                            <MdLogin className="w-4 text-2xl font-bold" />
+                                </div>
+
+                                <div className="absolute right-0 z-50 invisible w-56 p-4 mt-2 transition duration-200 rounded-md shadow-lg opacity-0 bg-base-100 group-hover:opacity-100 group-hover:visible">
+                                    <p className="font-semibold">{user.displayName || "No Name"}</p>
+                                    <p className="text-xs opacity-70">{user.email || "No Email"}</p>
+                                    <li className="pt-2 text-md">
+                                        <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/profile">
+                                            <FaUserCircle /> Profile
                                         </NavLink>
                                     </li>
-                                    <li className="lg:hidden">
-                                        <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">
-                                            <FaUserPlus className="w-4" />
-                                        </NavLink>
-                                    </li>
-                                </ul>
+                                </div>
                             </div>
 
-                        </>
+                            {/* Logout */}
+                            <li>
+                                <button onClick={logOut} className="hidden btn btn-error lg:flex gap-2 items-center">
+                                    <MdLogout /> LogOut
+                                </button>
+                            </li>
+                            <li className="-ml-2">
+                                <button onClick={logOut} className="btn btn-error lg:hidden">
+                                    <MdLogout />
+                                </button>
+                            </li>
+                        </ul>
+                    ) : (
+                        <ul className="flex items-center gap-3 px-1">
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/">
+                                    <FaHome /> Home
+                                </NavLink>
+                            </li>
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "text-indigo-500 flex items-center gap-2" : "flex items-center gap-2"} to="/about">
+                                    <FaInfoCircle /> AboutUs
+                                </NavLink>
+                            </li>
+                            <p>{SunMun}</p>
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn flex items-center gap-2" : "btn btn-primary flex items-center gap-2"} to="/login">
+                                    <MdLogin /> Login
+                                </NavLink>
+                            </li>
+                            <li className="hidden lg:flex">
+                                <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn flex items-center gap-2" : "btn btn-primary flex items-center gap-2"} to="/signup">
+                                    <FaUserPlus /> Sign Up
+                                </NavLink>
+                            </li>
+
+                            {/* Mobile Login/Signup */}
+                            <li className="lg:hidden">
+                                <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/login">
+                                    <MdLogin className="text-2xl" />
+                                </NavLink>
+                            </li>
+                            <li className="lg:hidden">
+                                <NavLink className={({ isActive }) => isActive ? "bg-indigo-700 btn" : "btn btn-primary"} to="/signup">
+                                    <FaUserPlus />
+                                </NavLink>
+                            </li>
+                        </ul>
                     )}
                 </div>
             </div>

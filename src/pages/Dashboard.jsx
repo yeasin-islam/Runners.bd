@@ -18,9 +18,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="drawer-side min-h-screen">
+      <div className="drawer-side h-full bg-base-200">
         <label className="drawer-overlay"></label>
-        <ul className="min-h-screen p-4 menu w-80 bg-base-200 text-base-content">
+        <ul className="p-4 menu w-80 text-base-content">
 
           <li>
             <NavLink
