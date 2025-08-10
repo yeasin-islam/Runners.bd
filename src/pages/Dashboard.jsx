@@ -18,7 +18,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="drawer-side h-full bg-base-200">
+      <div className="drawer-side min-h-screen h-full bg-base-200">
         <label className="drawer-overlay"></label>
         <ul className="p-4 menu w-80 text-base-content">
 

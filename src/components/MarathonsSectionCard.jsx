@@ -28,13 +28,13 @@ const MarathonsSectionCard = ({ marathonPost }) => {
                 <p className="text-center text-gray-500">{description}</p>
                 <p className='font-medium'>🏃 Distance: {distance}</p>
                 <p className='font-medium'>📍 Location: {location}</p>
-                <h4>🟢 Registration Start:
-                    <span className="font-semibold text-blue-600"> {startReg}</span></h4>
+                {/* <h4>🟢 Registration Start:
+                    <span className="font-semibold text-blue-600"> {startReg}</span></h4> */}
                 <h4>🔴 Registration End:
                     <span className="font-semibold text-red-600"> {endReg}</span></h4>
                 <h4>🏁 Marathon Date:
                     <span className="font-semibold text-emerald-600"> {marathonDate}</span></h4>
-                <p>🕒 Created: <span className="text-gray-600"> {createdAt}</span></p>
+                {/* <p>🕒 Created: <span className="text-gray-600"> {createdAt}</span></p> */}
                 <div className="justify-end mt-4 card-actions">
                     <Link to={`/marathon-details/${_id}`}>
                         <button id="clickable" className="btn btn-primary">Details</button>
